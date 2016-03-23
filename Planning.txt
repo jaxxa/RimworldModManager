@@ -1,0 +1,9 @@
+-XML config for mod directory and save directory
+
+- Show list of mods from folder, include missing mods only found in .xml list
+- Order by load order
+- Allow user to reorder mods
+
+- Find dependencies from individual mods .xml
+- warn for missing dependencies
+- warn for dependencies in the wrong order.
