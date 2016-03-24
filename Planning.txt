@@ -7,3 +7,5 @@
 - Find dependencies from individual mods .xml
 - warn for missing dependencies
 - warn for dependencies in the wrong order.
+
+Save/Load mod order.

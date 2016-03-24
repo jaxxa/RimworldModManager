@@ -12,6 +12,8 @@ namespace RimworldModOrginiser
 {
     public partial class frmMain : Form
     {
+        RimworldModOrginiser.DataObjects.Manager m_Manager;
+
         public frmMain()
         {
             InitializeComponent();
@@ -19,8 +21,10 @@ namespace RimworldModOrginiser
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            RimworldModOrginiser.DataObjects.Mod testMod = new RimworldModOrginiser.DataObjects.Mod();
-            testMod.load(@"C:\Games\RimWorldAlpha12dWin\RimWorld914Win\Mods\Core");
+            this.m_Manager = new RimworldModOrginiser.DataObjects.Manager();
+            this.m_Manager.load(@"C:\Games\RimWorldAlpha12dWin\RimWorld914Win");
+
+            this.bsrcModDetails.DataSource = this.m_Manager.ModList;
         }
     }
 }
