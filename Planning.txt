@@ -1,11 +1,24 @@
--XML config for mod directory and save directory
+-XML config for rimworld directory and save directory
+--Multiple configs that you can swap between?
 
-- Show list of mods from folder, include missing mods only found in .xml list
-- Order by load order
-- Allow user to reorder mods
+Launch Game feature
+--With Support for overriding save locations.
 
-- Find dependencies from individual mods .xml
+Show list of mods from folder, 
+-include missing mods only found in .xml order list
+-Order by load order
+-Allow user to reorder mods
+-Save out the list in customised order.
+
+Create a new Save Folder?
+--Save out shortcuts / .bat files to rimworld?
+
+Reading in new .xml file
+- Find dependencies for individual mods
 - warn for missing dependencies
 - warn for dependencies in the wrong order.
+- Automatically reorginise
 
-Save/Load mod order.
+Save/Load mod order. to external files.
+-Helpful for modpacks???
+--Probably not much, they would just saveoout the file.
