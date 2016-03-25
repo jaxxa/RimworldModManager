@@ -1,9 +1,0 @@
-C:\Git\RimworldModOrginiser\Source\RimworldModOrginiser\RimworldModOrginiser\bin\Debug\RimworldModOrginiser.exe.config
-C:\Git\RimworldModOrginiser\Source\RimworldModOrginiser\RimworldModOrginiser\obj\Debug\RimworldModOrginiser.csprojResolveAssemblyReference.cache
-C:\Git\RimworldModOrginiser\Source\RimworldModOrginiser\RimworldModOrginiser\obj\Debug\RimworldModOrginiser.frmMain.resources
-C:\Git\RimworldModOrginiser\Source\RimworldModOrginiser\RimworldModOrginiser\obj\Debug\RimworldModOrginiser.Properties.Resources.resources
-C:\Git\RimworldModOrginiser\Source\RimworldModOrginiser\RimworldModOrginiser\obj\Debug\RimworldModOrginiser.csproj.GenerateResource.Cache
-C:\Git\RimworldModOrginiser\Source\RimworldModOrginiser\RimworldModOrginiser\bin\Debug\RimworldModOrginiser.exe
-C:\Git\RimworldModOrginiser\Source\RimworldModOrginiser\RimworldModOrginiser\bin\Debug\RimworldModOrginiser.pdb
-C:\Git\RimworldModOrginiser\Source\RimworldModOrginiser\RimworldModOrginiser\obj\Debug\RimworldModOrginiser.exe
-C:\Git\RimworldModOrginiser\Source\RimworldModOrginiser\RimworldModOrginiser\obj\Debug\RimworldModOrginiser.pdb
