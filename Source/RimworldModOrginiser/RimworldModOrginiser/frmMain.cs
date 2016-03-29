@@ -22,7 +22,10 @@ namespace RimworldModOrginiser
         private void frmMain_Load(object sender, EventArgs e)
         {
             this.m_Manager = new RimworldModOrginiser.DataObjects.Manager();
-            this.m_Manager.load(@"C:\Games\RimWorldAlpha12dWin\RimWorld914Win");
+
+            this.m_Manager.LoadModList(@"C:\Games\RimWorldAlpha12dWin\RimWorld914Win");
+
+            this.m_Manager.LoadModConfig(@"C:\Games\RimWorld1123WinDev\SaveData");
 
             this.bsrcModDetails.DataSource = this.m_Manager.ModList;
         }

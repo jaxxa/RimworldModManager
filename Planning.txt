@@ -33,3 +33,4 @@ Automatically check for Errors???
   * Waiting for a time or reading log.
 * Check for errors in the log.
 * If no errors close rimworld, enable next mod on list and relaunch.
+* If errors found report the load order and the error message.

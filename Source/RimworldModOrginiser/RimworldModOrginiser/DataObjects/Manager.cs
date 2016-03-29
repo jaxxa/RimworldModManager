@@ -21,15 +21,15 @@ namespace RimworldModOrginiser.DataObjects
             }
         }
         List<ModDetails> m_ModList = new List<ModDetails>();
-        
-        public void load(string rwFolder)
+
+        public void LoadModList(string rwFolder)
         {
             this.m_ModList.Clear();
 
             // Check that the Rimworld Folder exists
             if (!System.IO.Directory.Exists(rwFolder))
             {
-                MessageBox.Show("Rimworld Folder not Found");
+                MessageBox.Show("Rimworld Folder not Found" + rwFolder);
                 return;
             }
 
@@ -37,7 +37,7 @@ namespace RimworldModOrginiser.DataObjects
             //Check mods folder exists
             if (!System.IO.Directory.Exists(_RimworldModsFolder))
             {
-                MessageBox.Show("Mods Folder not Found");
+                MessageBox.Show("Mods Folder not Found" + _RimworldModsFolder);
                 return;
             }
 
@@ -54,5 +54,34 @@ namespace RimworldModOrginiser.DataObjects
                 this.m_ModList.Add(_CurrentMod);
             }
         }
+
+        public void LoadModConfig(string saveFolder)
+        {
+
+            // Check that the Save Folder exists
+            if (!System.IO.Directory.Exists(saveFolder))
+            {
+                MessageBox.Show("Save Folder not Found: " + saveFolder);
+                return;
+            }
+
+            string _RimworldConfigFolder = saveFolder + @"\Config";
+            //Check mods folder exists
+            if (!System.IO.Directory.Exists(_RimworldConfigFolder))
+            {
+                MessageBox.Show("Config Folder not Found:" + _RimworldConfigFolder);
+                return;
+            }
+
+            //Check File
+            string _ModsConfigFilePath = _RimworldConfigFolder + @"\ModsConfig.xml";
+            if (!System.IO.File.Exists(_ModsConfigFilePath))
+            {
+                MessageBox.Show("Mod Config File not Found:" + _ModsConfigFilePath);
+                return;
+            }
+
+        }
+
     }
 }
