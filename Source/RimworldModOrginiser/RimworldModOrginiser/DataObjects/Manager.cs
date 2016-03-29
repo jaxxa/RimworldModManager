@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace RimworldModOrginiser.DataObjects
 {
@@ -20,7 +21,7 @@ namespace RimworldModOrginiser.DataObjects
                 this.m_ModList = value;
             }
         }
-        List<ModDetails> m_ModList = new List<ModDetails>();
+        private List<ModDetails> m_ModList = new List<ModDetails>();
 
         public void LoadModList(string rwFolder)
         {
@@ -80,8 +81,41 @@ namespace RimworldModOrginiser.DataObjects
                 MessageBox.Show("Mod Config File not Found:" + _ModsConfigFilePath);
                 return;
             }
+            
+            XmlDocument _XmlFileConfigFile = new XmlDocument();
+            _XmlFileConfigFile.Load(_ModsConfigFilePath);
 
+            var _XmlModsConfigData = _XmlFileConfigFile.DocumentElement.SelectSingleNode("/ModsConfigData");
+
+            var _XmlBuildNumber = _XmlFileConfigFile.DocumentElement.SelectSingleNode("buildNumber");
+
+            var _XmlactiveMods = _XmlFileConfigFile.DocumentElement.SelectSingleNode("activeMods");
+
+            List<string> _ActiveMods = new List<string>();
+
+            int i = 0;
+            foreach (XmlNode _XmlactiveMod in _XmlactiveMods.ChildNodes)
+            {
+            
+                _ActiveMods.Add(_XmlactiveMod.InnerText);
+                ModDetails _currentMod = this.GetModByName(_XmlactiveMod.InnerText);
+
+                if (_currentMod != null)
+                {
+                    _currentMod.configValues(i);
+                }
+                else
+                {
+                    //Add missing mods
+                }
+
+                i++;
+            }
         }
 
+        public ModDetails GetModByName(string requiredModName)
+        {
+            return this.ModList.FirstOrDefault<ModDetails>(m => m.Name == requiredModName);
+        }
     }
 }

@@ -35,6 +35,9 @@
             this.urlDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bsrcModDetails = new System.Windows.Forms.BindingSource(this.components);
+            this.Sequence = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ExistsInConfig = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ExistsInDisk = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsrcModDetails)).BeginInit();
             this.SuspendLayout();
@@ -50,7 +53,10 @@
             this.nameDataGridViewTextBoxColumn,
             this.authorDataGridViewTextBoxColumn,
             this.urlDataGridViewTextBoxColumn,
-            this.descriptionDataGridViewTextBoxColumn});
+            this.descriptionDataGridViewTextBoxColumn,
+            this.Sequence,
+            this.ExistsInConfig,
+            this.ExistsInDisk});
             this.dataGridView1.DataSource = this.bsrcModDetails;
             this.dataGridView1.Location = new System.Drawing.Point(12, 61);
             this.dataGridView1.Name = "dataGridView1";
@@ -85,6 +91,24 @@
             // 
             this.bsrcModDetails.DataSource = typeof(RimworldModOrginiser.DataObjects.ModDetails);
             // 
+            // Sequence
+            // 
+            this.Sequence.DataPropertyName = "Sequence";
+            this.Sequence.HeaderText = "Sequence";
+            this.Sequence.Name = "Sequence";
+            // 
+            // ExistsInConfig
+            // 
+            this.ExistsInConfig.DataPropertyName = "ExistsInConfig";
+            this.ExistsInConfig.HeaderText = "ExistsInConfig";
+            this.ExistsInConfig.Name = "ExistsInConfig";
+            // 
+            // ExistsInDisk
+            // 
+            this.ExistsInDisk.DataPropertyName = "ExistsInDisk";
+            this.ExistsInDisk.HeaderText = "ExistsInDisk";
+            this.ExistsInDisk.Name = "ExistsInDisk";
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -108,6 +132,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn authorDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn urlDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Sequence;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn ExistsInConfig;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn ExistsInDisk;
     }
 }
 

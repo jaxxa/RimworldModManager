@@ -63,7 +63,7 @@ namespace RimworldModOrginiser.DataObjects
             }
         }
         string m_Description;
-
+        
         //Convert this to its own class eventually instead of strings?
         public List<String> Dependencies
         {
@@ -78,8 +78,47 @@ namespace RimworldModOrginiser.DataObjects
         }
         List<String> m_Dependencies = new List<string>();
 
+        public int Sequence
+        {
+            get
+            {
+                return this.m_Sequence;
+            }
+            set
+            {
+                this.m_Sequence = value;
+            }
+        }
+        private int m_Sequence = -1;
+
+        public bool ExistsInConfig
+        {
+            get
+            {
+                return this.m_ExistsInConfig;
+            }
+            set
+            {
+                this.m_ExistsInConfig = value;
+            }
+        }
+        private bool m_ExistsInConfig = false;
+
+        public bool ExistsInDisk
+        {
+            get
+            {
+                return this.m_ExistsInDisk;
+            }
+            set
+            {
+                this.m_ExistsInDisk = value;
+            }
+        }
+        private bool m_ExistsInDisk = false;
+
         #endregion ' Properties
-        
+
         public void load(string modFolder)
         {
             if (System.IO.File.Exists(modFolder + @"\About\About.xml"))
@@ -114,6 +153,14 @@ namespace RimworldModOrginiser.DataObjects
                     this.m_Dependencies.Add(_CurrentNode.InnerText);
                 }
             }
+
+            this.m_ExistsInDisk = true;
+        }
+
+        public void configValues(int sequence)
+        {
+            this.Sequence = sequence;
+            this.ExistsInConfig = true;
         }
 
     }
