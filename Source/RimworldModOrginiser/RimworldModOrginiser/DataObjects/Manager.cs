@@ -81,7 +81,7 @@ namespace RimworldModOrginiser.DataObjects
                 MessageBox.Show("Mod Config File not Found:" + _ModsConfigFilePath);
                 return;
             }
-            
+
             XmlDocument _XmlFileConfigFile = new XmlDocument();
             _XmlFileConfigFile.Load(_ModsConfigFilePath);
 
@@ -96,7 +96,7 @@ namespace RimworldModOrginiser.DataObjects
             int i = 0;
             foreach (XmlNode _XmlactiveMod in _XmlactiveMods.ChildNodes)
             {
-            
+
                 _ActiveMods.Add(_XmlactiveMod.InnerText);
                 ModDetails _currentMod = this.GetModByName(_XmlactiveMod.InnerText);
 
@@ -107,6 +107,14 @@ namespace RimworldModOrginiser.DataObjects
                 else
                 {
                     //Add missing mods
+
+                    ModDetails _NewMod = new ModDetails();
+
+                    _NewMod.Name = _XmlactiveMod.InnerText;
+                    _NewMod.configValues(i);
+
+                    this.ModList.Add(_NewMod);
+
                 }
 
                 i++;
@@ -117,5 +125,44 @@ namespace RimworldModOrginiser.DataObjects
         {
             return this.ModList.FirstOrDefault<ModDetails>(m => m.Name == requiredModName);
         }
+
+        public ModDetails GetModBySequence(int requiredSequence)
+        {
+            return this.ModList.FirstOrDefault<ModDetails>(m => m.Sequence == requiredSequence);
+        }
+
+        public void MoveModUp(ModDetails modToMove)
+        {
+            if (modToMove.Sequence > 0)
+            {
+                ModDetails _SwappingMod = this.GetModBySequence(modToMove.Sequence - 1);
+
+                modToMove.Sequence -= 1;
+
+                if (_SwappingMod != null)
+                {
+                    _SwappingMod.Sequence += 1;
+                }
+
+            }
+        }
+
+        public void MoveModDown(ModDetails modToMove)
+        {
+            if (modToMove.Sequence > 0)
+            {
+                ModDetails _SwappingMod = this.GetModBySequence(modToMove.Sequence + 1);
+
+                modToMove.Sequence += 1;
+
+                if (_SwappingMod != null)
+                {
+                    _SwappingMod.Sequence -= 1;
+                }
+
+            }
+        }
+
+
     }
 }

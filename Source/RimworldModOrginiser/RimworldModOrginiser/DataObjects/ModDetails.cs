@@ -163,5 +163,11 @@ namespace RimworldModOrginiser.DataObjects
             this.ExistsInConfig = true;
         }
 
+        public override string ToString()
+        {
+            return "ModDetails: " + this.Sequence + " : " + this.Name;
+            //return base.ToString();
+        }
+
     }
 }
