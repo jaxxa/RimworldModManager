@@ -11,7 +11,7 @@ namespace RimworldModOrginiser.DataObjects
 {
     class Manager
     {
-        public BindingList<ModDetails> ModList
+        public List<ModDetails> ModList
         {
             get
             {
@@ -22,7 +22,7 @@ namespace RimworldModOrginiser.DataObjects
                 this.m_ModList = value;
             }
         }
-        private BindingList<ModDetails> m_ModList = new BindingList<ModDetails>();
+        private List<ModDetails> m_ModList = new List<ModDetails>();
 
         public void LoadModList(string rwFolder)
         {
@@ -188,7 +188,6 @@ namespace RimworldModOrginiser.DataObjects
             }
         }
 
-
         //Resequence
         public void Resequence()
         {
@@ -204,9 +203,11 @@ namespace RimworldModOrginiser.DataObjects
 
         }
 
-
         //Order By Sequence
-
+        public void Reorder()
+        {
+            this.m_ModList = m_ModList.OrderBy(m => m.Sequence).ToList();
+        }
 
     }
 }

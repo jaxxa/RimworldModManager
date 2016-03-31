@@ -23,6 +23,8 @@ namespace RimworldModOrginiser
         {
         }
 
+        #region Gui Events
+
         private void bttnLoad_Click(object sender, EventArgs e)
         {
             this.m_Manager = new RimworldModOrginiser.DataObjects.Manager();
@@ -31,7 +33,10 @@ namespace RimworldModOrginiser
 
             this.m_Manager.LoadModConfig(@"C:\Games\RimWorld1123WinDev\SaveData");
 
-            this.bsrcModDetails.DataSource = this.m_Manager.ModList;
+            //this.bsrcModDetails.DataSource = this.m_Manager.ModList;
+
+
+            this.UpdateOrder();
         }
 
         private void toolModGrid_MoveUp_Click(object sender, EventArgs e)
@@ -45,7 +50,7 @@ namespace RimworldModOrginiser
             }
 
             //Update grid sequence
-            dgrvMods.Refresh();
+            this.UpdateOrder();
             //Reselect
         }
 
@@ -68,7 +73,7 @@ namespace RimworldModOrginiser
             //this.bsrcModDetails.DataSource = this.m_Manager.ModList;
 
             //Update grid sequence
-            dgrvMods.Refresh();
+            this.UpdateOrder();
 
             // dgrvMods.Sort(dgrvMods_Sequence, ListSortDirection.Descending);
             //Reselect
@@ -84,11 +89,24 @@ namespace RimworldModOrginiser
                 DataObjects.ModDetails _CurrentMod = (DataObjects.ModDetails)_CurrentRow.DataBoundItem;
                 this.m_Manager.Toggle(_CurrentMod);
             }
+            this.UpdateOrder();
+        }
+        
 
+        private void UpdateOrder()
+        {
 
+            this.m_Manager.Reorder();
+            dgrvMods.DataSource = null;
+            dgrvMods.DataSource = m_Manager.ModList;
             dgrvMods.Refresh();
         }
 
+        #endregion
+
+        /// <summary>
+        /// Select all rows that have atleast one cell selected.
+        /// </summary>
         private void FullSelect()
         {
             foreach (DataGridViewCell _CurrentCell in dgrvMods.SelectedCells)
@@ -97,5 +115,6 @@ namespace RimworldModOrginiser
 
             }
         }
+
     }
 }
