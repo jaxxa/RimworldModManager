@@ -36,7 +36,7 @@ namespace RimworldModOrginiser
 
         private void toolModGrid_MoveUp_Click(object sender, EventArgs e)
         {
-            foreach (DataGridViewRow _CurrentRow in dataGridView1.SelectedRows)
+            foreach (DataGridViewRow _CurrentRow in dgrvMods.SelectedRows)
             {
                 DataObjects.ModDetails _CurrentMod = (DataObjects.ModDetails)_CurrentRow.DataBoundItem;
 
@@ -44,29 +44,47 @@ namespace RimworldModOrginiser
             }
 
             //Update grid sequence
-            dataGridView1.Refresh();
+            dgrvMods.Refresh();
             //Reselect
         }
 
         private void toolModGrid_MoveDown_Click(object sender, EventArgs e)
         {
 
-            foreach (DataGridViewRow _CurrentRow in dataGridView1.SelectedRows)
+            foreach (DataGridViewRow _CurrentRow in dgrvMods.SelectedRows)
             {
                 DataObjects.ModDetails _CurrentMod = (DataObjects.ModDetails)_CurrentRow.DataBoundItem;
-
                 this.m_Manager.MoveModDown(_CurrentMod);
             }
 
+            //this.m_Manager.ModList = this.m_Manager.ModList.OrderBy(o => o.Sequence);
+
+            //var temp = this.m_Manager.ModList.OrderBy(o => o.Sequence);
+
+            //this.bsrcModDetails.DataSource = null;
+            //this.bsrcModDetails.DataSource = this.m_Manager.ModList;
 
             //Update grid sequence
-            dataGridView1.Refresh();
+            dgrvMods.Refresh();
+
+           // dgrvMods.Sort(dgrvMods_Sequence, ListSortDirection.Descending);
             //Reselect
         }
 
         private void toolModGrid_Toggle_Click(object sender, EventArgs e)
         {
 
+
+            foreach (DataGridViewRow _CurrentRow in dgrvMods.SelectedRows)
+            {
+                DataObjects.ModDetails _CurrentMod = (DataObjects.ModDetails)_CurrentRow.DataBoundItem;
+                this.m_Manager.Toggle(_CurrentMod);
+            }
+
+
+            dgrvMods.Refresh();
         }
+
+        
     }
 }

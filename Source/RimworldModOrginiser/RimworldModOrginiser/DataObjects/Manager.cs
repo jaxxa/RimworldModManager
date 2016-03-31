@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,7 +11,7 @@ namespace RimworldModOrginiser.DataObjects
 {
     class Manager
     {
-        public List<ModDetails> ModList
+        public BindingList<ModDetails> ModList
         {
             get
             {
@@ -21,7 +22,7 @@ namespace RimworldModOrginiser.DataObjects
                 this.m_ModList = value;
             }
         }
-        private List<ModDetails> m_ModList = new List<ModDetails>();
+        private BindingList<ModDetails> m_ModList = new BindingList<ModDetails>();
 
         public void LoadModList(string rwFolder)
         {
@@ -149,7 +150,7 @@ namespace RimworldModOrginiser.DataObjects
 
         public void MoveModDown(ModDetails modToMove)
         {
-            if (modToMove.Sequence > 0)
+            if (modToMove.Sequence < (this.NextUnusedSequence() - 1))
             {
                 ModDetails _SwappingMod = this.GetModBySequence(modToMove.Sequence + 1);
 
@@ -162,6 +163,49 @@ namespace RimworldModOrginiser.DataObjects
 
             }
         }
+
+        public int NextUnusedSequence()
+        {
+            for (int _CheckingSequence = 0; _CheckingSequence < this.ModList.Count; _CheckingSequence++)
+            {
+                if (this.GetModBySequence(_CheckingSequence) == null)
+                {
+                    return _CheckingSequence;
+                }
+            }
+            return -1;
+        }
+
+        public void Toggle(ModDetails modToToggle)
+        {
+            if (modToToggle.Sequence == -1)
+            {
+                modToToggle.Sequence = this.NextUnusedSequence();
+            }
+            else
+            {
+                modToToggle.Sequence = -1;
+            }
+        }
+
+
+        //Resequence
+        public void Resequence()
+        {
+
+            foreach (ModDetails _Mod in this.ModList)
+            {
+                // Find duplicates
+
+                //Find gaps
+            }
+
+            //ModList.order
+
+        }
+
+
+        //Order By Sequence
 
 
     }
