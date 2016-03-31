@@ -36,6 +36,7 @@ namespace RimworldModOrginiser
 
         private void toolModGrid_MoveUp_Click(object sender, EventArgs e)
         {
+            this.FullSelect();
             foreach (DataGridViewRow _CurrentRow in dgrvMods.SelectedRows)
             {
                 DataObjects.ModDetails _CurrentMod = (DataObjects.ModDetails)_CurrentRow.DataBoundItem;
@@ -50,6 +51,8 @@ namespace RimworldModOrginiser
 
         private void toolModGrid_MoveDown_Click(object sender, EventArgs e)
         {
+
+            this.FullSelect();
 
             foreach (DataGridViewRow _CurrentRow in dgrvMods.SelectedRows)
             {
@@ -67,13 +70,14 @@ namespace RimworldModOrginiser
             //Update grid sequence
             dgrvMods.Refresh();
 
-           // dgrvMods.Sort(dgrvMods_Sequence, ListSortDirection.Descending);
+            // dgrvMods.Sort(dgrvMods_Sequence, ListSortDirection.Descending);
             //Reselect
         }
 
         private void toolModGrid_Toggle_Click(object sender, EventArgs e)
         {
 
+            this.FullSelect();
 
             foreach (DataGridViewRow _CurrentRow in dgrvMods.SelectedRows)
             {
@@ -85,6 +89,13 @@ namespace RimworldModOrginiser
             dgrvMods.Refresh();
         }
 
-        
+        private void FullSelect()
+        {
+            foreach (DataGridViewCell _CurrentCell in dgrvMods.SelectedCells)
+            {
+                _CurrentCell.OwningRow.Selected = true;
+
+            }
+        }
     }
 }
