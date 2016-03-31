@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RimworldModOrginiser.DataObjects;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,6 +14,8 @@ namespace RimworldModOrginiser
     public partial class frmMain : Form
     {
         RimworldModOrginiser.DataObjects.Manager m_Manager;
+
+        private List<DataObjects.ModDetails> m_SelctedMods = new List<DataObjects.ModDetails>();
 
         public frmMain()
         {
@@ -33,31 +36,41 @@ namespace RimworldModOrginiser
 
             this.m_Manager.LoadModConfig(@"C:\Games\RimWorld1123WinDev\SaveData");
 
-            //this.bsrcModDetails.DataSource = this.m_Manager.ModList;
-
-
             this.UpdateOrder();
         }
 
         private void toolModGrid_MoveUp_Click(object sender, EventArgs e)
         {
-            this.FullSelect();
+            //this.FullSelect();
+            this.SaveSelection();
+
+            List<ModDetails> temp = new List<ModDetails>();
+
             foreach (DataGridViewRow _CurrentRow in dgrvMods.SelectedRows)
             {
                 DataObjects.ModDetails _CurrentMod = (DataObjects.ModDetails)_CurrentRow.DataBoundItem;
+                temp.Add(_CurrentMod);
+            }
 
+            temp.Reverse();
+
+
+            foreach (ModDetails _CurrentMod in temp)
+            {
                 this.m_Manager.MoveModUp(_CurrentMod);
             }
+
 
             //Update grid sequence
             this.UpdateOrder();
             //Reselect
+
+            this.LoadSelection();
         }
 
         private void toolModGrid_MoveDown_Click(object sender, EventArgs e)
         {
-
-            this.FullSelect();
+            this.SaveSelection();
 
             foreach (DataGridViewRow _CurrentRow in dgrvMods.SelectedRows)
             {
@@ -77,12 +90,14 @@ namespace RimworldModOrginiser
 
             // dgrvMods.Sort(dgrvMods_Sequence, ListSortDirection.Descending);
             //Reselect
+
+            this.LoadSelection();
         }
 
         private void toolModGrid_Toggle_Click(object sender, EventArgs e)
         {
-
-            this.FullSelect();
+            this.SaveSelection();
+            //this.FullSelect();
 
             foreach (DataGridViewRow _CurrentRow in dgrvMods.SelectedRows)
             {
@@ -90,9 +105,9 @@ namespace RimworldModOrginiser
                 this.m_Manager.Toggle(_CurrentMod);
             }
             this.UpdateOrder();
+            this.LoadSelection();
         }
         
-
         private void UpdateOrder()
         {
 
@@ -103,6 +118,33 @@ namespace RimworldModOrginiser
         }
 
         #endregion
+
+        private void SaveSelection()
+        {
+            this.FullSelect();
+
+            this.m_SelctedMods.Clear();
+
+            foreach (DataGridViewRow _CurrentRow in dgrvMods.SelectedRows)
+            {
+                ModDetails _CurrentMod = (DataObjects.ModDetails)_CurrentRow.DataBoundItem;
+
+                this.m_SelctedMods.Add(_CurrentMod);
+            }
+        }
+
+        private void LoadSelection()
+        {
+            dgrvMods.ClearSelection();
+
+            foreach (DataGridViewRow _CurrentRow in  dgrvMods.Rows)
+            {
+                if (this.m_SelctedMods.Contains((DataObjects.ModDetails)_CurrentRow.DataBoundItem))
+                {
+                    _CurrentRow.Selected = true;
+                }
+            }
+        }
 
         /// <summary>
         /// Select all rows that have atleast one cell selected.

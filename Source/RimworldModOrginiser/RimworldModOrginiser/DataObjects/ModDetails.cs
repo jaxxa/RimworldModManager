@@ -10,6 +10,7 @@ namespace RimworldModOrginiser.DataObjects
     class ModDetails
     {
 
+
         #region Properties
 
         public string Name
@@ -89,7 +90,7 @@ namespace RimworldModOrginiser.DataObjects
                 this.m_Sequence = value;
             }
         }
-        private int m_Sequence = -1;
+        private int m_Sequence = Manager.INACTIVE_SEQUENCE;
 
         public bool ExistsInConfig
         {

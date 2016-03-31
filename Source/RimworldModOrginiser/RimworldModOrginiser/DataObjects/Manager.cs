@@ -11,6 +11,9 @@ namespace RimworldModOrginiser.DataObjects
 {
     class Manager
     {
+
+        public const int INACTIVE_SEQUENCE = int.MaxValue;
+
         public List<ModDetails> ModList
         {
             get
@@ -173,18 +176,18 @@ namespace RimworldModOrginiser.DataObjects
                     return _CheckingSequence;
                 }
             }
-            return -1;
+            return Manager.INACTIVE_SEQUENCE;
         }
 
         public void Toggle(ModDetails modToToggle)
         {
-            if (modToToggle.Sequence == -1)
+            if (modToToggle.Sequence == Manager.INACTIVE_SEQUENCE)
             {
                 modToToggle.Sequence = this.NextUnusedSequence();
             }
             else
             {
-                modToToggle.Sequence = -1;
+                modToToggle.Sequence = Manager.INACTIVE_SEQUENCE;
             }
         }
 
