@@ -9,8 +9,7 @@ namespace RimworldModOrginiser.DataObjects
 {
     class ModDetails
     {
-
-
+        
         #region Properties
 
         public string Name
@@ -170,5 +169,24 @@ namespace RimworldModOrginiser.DataObjects
             //return base.ToString();
         }
 
+        public string GetDetails()
+        {
+            StringBuilder _Details = new StringBuilder();
+
+            _Details.AppendLine("Name:" + this.Name);
+            _Details.AppendLine("Sequence:" + this.Sequence.ToString());
+            _Details.AppendLine("Author:" + this.Author);
+            _Details.AppendLine("Description:" + this.Description);
+            _Details.AppendLine("URL:" + this.Url);
+            _Details.AppendLine("");
+            _Details.AppendLine("Dependencies:");
+
+            foreach (string _Dependencie in this.Dependencies)
+            {
+                _Details.AppendLine(_Dependencie);
+            }
+
+            return _Details.ToString();
+        }
     }
 }

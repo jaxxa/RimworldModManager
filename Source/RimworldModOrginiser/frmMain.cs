@@ -107,7 +107,7 @@ namespace RimworldModOrginiser
             this.UpdateOrder();
             this.LoadSelection();
         }
-        
+
         private void UpdateOrder()
         {
 
@@ -137,7 +137,7 @@ namespace RimworldModOrginiser
         {
             dgrvMods.ClearSelection();
 
-            foreach (DataGridViewRow _CurrentRow in  dgrvMods.Rows)
+            foreach (DataGridViewRow _CurrentRow in dgrvMods.Rows)
             {
                 if (this.m_SelctedMods.Contains((DataObjects.ModDetails)_CurrentRow.DataBoundItem))
                 {
@@ -158,5 +158,25 @@ namespace RimworldModOrginiser
             }
         }
 
+        private void bsrcModDetails_CurrentItemChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgrvMods_SelectionChanged(object sender, EventArgs e)
+        {
+
+            foreach (DataGridViewCell _CurrentCell in dgrvMods.SelectedCells)
+            {
+                ModDetails _CurrentMod = (DataObjects.ModDetails)_CurrentCell.OwningRow.DataBoundItem;
+
+                this.txbxModDetails.Text = _CurrentMod.GetDetails();
+
+                return;
+
+            }
+
+            this.txbxModDetails.Text = null;
+        }
     }
 }
