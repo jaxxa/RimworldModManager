@@ -187,5 +187,10 @@ namespace RimworldModOrginiser
             }
             this.toolModGrid_Toggle_Click(sender, e);
         }
+
+        private void bttnTest_Click(object sender, EventArgs e)
+        {
+            this.m_Manager.CheckIssues();
+        }
     }
 }

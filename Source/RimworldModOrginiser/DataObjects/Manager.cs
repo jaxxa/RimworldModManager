@@ -212,5 +212,9 @@ namespace RimworldModOrginiser.DataObjects
             this.m_ModList = m_ModList.OrderBy(m => m.Sequence).ToList();
         }
 
+        public void CheckIssues()
+        {
+            //Iterate mods list.
+        }
     }
 }

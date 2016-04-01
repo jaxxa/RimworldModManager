@@ -44,6 +44,7 @@
             this.dgrvMods_SequenceDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgrvMods_ExistsInConfig = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.dgrvMods_ExistsInDisk = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.bttnTest = new System.Windows.Forms.Button();
             this.dgrvMods_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgrvMods_Author = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgrvMods_Url = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -79,7 +80,7 @@
             this.dgrvMods.Location = new System.Drawing.Point(0, 0);
             this.dgrvMods.Name = "dgrvMods";
             this.dgrvMods.ReadOnly = true;
-            this.dgrvMods.Size = new System.Drawing.Size(522, 410);
+            this.dgrvMods.Size = new System.Drawing.Size(521, 396);
             this.dgrvMods.TabIndex = 0;
             this.dgrvMods.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgrvMods_CellDoubleClick);
             this.dgrvMods.SelectionChanged += new System.EventHandler(this.dgrvMods_SelectionChanged);
@@ -93,7 +94,7 @@
             this.toolModGrid_Toggle});
             this.toolModGrid.Location = new System.Drawing.Point(0, 0);
             this.toolModGrid.Name = "toolModGrid";
-            this.toolModGrid.Size = new System.Drawing.Size(735, 25);
+            this.toolModGrid.Size = new System.Drawing.Size(734, 25);
             this.toolModGrid.TabIndex = 1;
             this.toolModGrid.Text = "toolStrip1";
             // 
@@ -134,12 +135,13 @@
             // 
             // panelFooter
             // 
+            this.panelFooter.Controls.Add(this.bttnTest);
             this.panelFooter.Controls.Add(this.bttnLoad);
             this.panelFooter.Controls.Add(this.bttnSaveConfig);
             this.panelFooter.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelFooter.Location = new System.Drawing.Point(0, 435);
+            this.panelFooter.Location = new System.Drawing.Point(0, 421);
             this.panelFooter.Name = "panelFooter";
-            this.panelFooter.Size = new System.Drawing.Size(735, 40);
+            this.panelFooter.Size = new System.Drawing.Size(734, 40);
             this.panelFooter.TabIndex = 2;
             // 
             // bttnLoad
@@ -155,7 +157,7 @@
             // bttnSaveConfig
             // 
             this.bttnSaveConfig.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.bttnSaveConfig.Location = new System.Drawing.Point(648, 6);
+            this.bttnSaveConfig.Location = new System.Drawing.Point(647, 6);
             this.bttnSaveConfig.Name = "bttnSaveConfig";
             this.bttnSaveConfig.Size = new System.Drawing.Size(75, 23);
             this.bttnSaveConfig.TabIndex = 0;
@@ -175,8 +177,8 @@
             // splitModGridAndDetails.Panel2
             // 
             this.splitModGridAndDetails.Panel2.Controls.Add(this.txbxModDetails);
-            this.splitModGridAndDetails.Size = new System.Drawing.Size(735, 410);
-            this.splitModGridAndDetails.SplitterDistance = 522;
+            this.splitModGridAndDetails.Size = new System.Drawing.Size(734, 396);
+            this.splitModGridAndDetails.SplitterDistance = 521;
             this.splitModGridAndDetails.TabIndex = 3;
             // 
             // txbxModDetails
@@ -186,7 +188,7 @@
             this.txbxModDetails.Multiline = true;
             this.txbxModDetails.Name = "txbxModDetails";
             this.txbxModDetails.ReadOnly = true;
-            this.txbxModDetails.Size = new System.Drawing.Size(209, 410);
+            this.txbxModDetails.Size = new System.Drawing.Size(209, 396);
             this.txbxModDetails.TabIndex = 0;
             // 
             // dgrvMods_SequenceDescription
@@ -209,6 +211,16 @@
             this.dgrvMods_ExistsInDisk.HeaderText = "ExistsInDisk";
             this.dgrvMods_ExistsInDisk.Name = "dgrvMods_ExistsInDisk";
             this.dgrvMods_ExistsInDisk.ReadOnly = true;
+            // 
+            // bttnTest
+            // 
+            this.bttnTest.Location = new System.Drawing.Point(315, 5);
+            this.bttnTest.Name = "bttnTest";
+            this.bttnTest.Size = new System.Drawing.Size(75, 23);
+            this.bttnTest.TabIndex = 2;
+            this.bttnTest.Text = "Test";
+            this.bttnTest.UseVisualStyleBackColor = true;
+            this.bttnTest.Click += new System.EventHandler(this.bttnTest_Click);
             // 
             // dgrvMods_Name
             // 
@@ -247,10 +259,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(735, 475);
+            this.ClientSize = new System.Drawing.Size(734, 461);
             this.Controls.Add(this.splitModGridAndDetails);
             this.Controls.Add(this.toolModGrid);
             this.Controls.Add(this.panelFooter);
+            this.MinimumSize = new System.Drawing.Size(750, 500);
             this.Name = "frmMain";
             this.Text = "Rimworld Mod Orginiser";
             this.Load += new System.EventHandler(this.frmMain_Load);
@@ -290,6 +303,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgrvMods_Description;
         private System.Windows.Forms.DataGridViewCheckBoxColumn dgrvMods_ExistsInConfig;
         private System.Windows.Forms.DataGridViewCheckBoxColumn dgrvMods_ExistsInDisk;
+        private System.Windows.Forms.Button bttnTest;
     }
 }
 
