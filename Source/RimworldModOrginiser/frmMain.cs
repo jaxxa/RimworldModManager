@@ -178,5 +178,14 @@ namespace RimworldModOrginiser
 
             this.txbxModDetails.Text = null;
         }
+
+        private void dgrvMods_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0 || e.ColumnIndex < 0 )
+            {
+                return;
+            }
+            this.toolModGrid_Toggle_Click(sender, e);
+        }
     }
 }

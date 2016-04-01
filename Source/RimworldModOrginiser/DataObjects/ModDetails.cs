@@ -91,6 +91,21 @@ namespace RimworldModOrginiser.DataObjects
         }
         private int m_Sequence = Manager.INACTIVE_SEQUENCE;
 
+        public string SequenceDescription
+        {
+            get
+            {
+                if (int.Equals(this.Sequence,Manager.INACTIVE_SEQUENCE)  )
+                {
+                    return "Inactive";
+                }
+                else
+                {
+                    return this.Sequence.ToString();
+                }
+            }
+        }
+
         public bool ExistsInConfig
         {
             get
