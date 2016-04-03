@@ -9,7 +9,7 @@ using System.Xml;
 
 namespace RimworldModOrginiser.DataObjects
 {
-    class Manager
+    class ModManager
     {
 
         public const int INACTIVE_SEQUENCE = int.MaxValue;
@@ -176,18 +176,18 @@ namespace RimworldModOrginiser.DataObjects
                     return _CheckingSequence;
                 }
             }
-            return Manager.INACTIVE_SEQUENCE;
+            return ModManager.INACTIVE_SEQUENCE;
         }
 
         public void Toggle(ModDetails modToToggle)
         {
-            if (modToToggle.Sequence == Manager.INACTIVE_SEQUENCE)
+            if (modToToggle.Sequence == ModManager.INACTIVE_SEQUENCE)
             {
                 modToToggle.Sequence = this.NextUnusedSequence();
             }
             else
             {
-                modToToggle.Sequence = Manager.INACTIVE_SEQUENCE;
+                modToToggle.Sequence = ModManager.INACTIVE_SEQUENCE;
             }
         }
 

@@ -13,7 +13,7 @@ namespace RimworldModOrginiser
 {
     public partial class frmMain : Form
     {
-        Manager m_Manager;
+        ModManager m_Manager;
 
         Config m_Config;
 
@@ -35,9 +35,8 @@ namespace RimworldModOrginiser
             this.m_Config = new Config();
 
             this.m_Config.Load();
-
-
-            this.m_Manager = new RimworldModOrginiser.DataObjects.Manager();
+            
+            this.m_Manager = new RimworldModOrginiser.DataObjects.ModManager();
 
             this.m_Manager.LoadModList(this.m_Config.RimworldFolder);
 

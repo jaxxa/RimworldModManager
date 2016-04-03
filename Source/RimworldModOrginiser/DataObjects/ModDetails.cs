@@ -89,13 +89,13 @@ namespace RimworldModOrginiser.DataObjects
                 this.m_Sequence = value;
             }
         }
-        private int m_Sequence = Manager.INACTIVE_SEQUENCE;
+        private int m_Sequence = ModManager.INACTIVE_SEQUENCE;
 
         public string SequenceDescription
         {
             get
             {
-                if (int.Equals(this.Sequence,Manager.INACTIVE_SEQUENCE)  )
+                if (int.Equals(this.Sequence,ModManager.INACTIVE_SEQUENCE)  )
                 {
                     return "Inactive";
                 }

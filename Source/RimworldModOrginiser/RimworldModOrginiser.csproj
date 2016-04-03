@@ -47,7 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataObjects\Config.cs" />
-    <Compile Include="DataObjects\Manager.cs" />
+    <Compile Include="DataObjects\ModManager.cs" />
     <Compile Include="DataObjects\ModDetails.cs" />
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
