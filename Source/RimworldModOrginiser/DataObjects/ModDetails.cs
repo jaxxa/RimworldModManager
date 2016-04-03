@@ -131,19 +131,47 @@ namespace RimworldModOrginiser.DataObjects
             }
         }
         private bool m_ExistsInDisk = false;
-
-        public string Problems
+        
+        public bool ExistsInDependencies
         {
             get
             {
-                return this.m_Problems;
+                return this.m_ExistsInDependencies;
             }
             set
             {
-                this.m_Problems = value;
+                this.m_ExistsInDependencies = value;
             }
         }
-        private string m_Problems;
+        private bool m_ExistsInDependencies = false;
+        
+        public bool ExistsInAbout
+        {
+            get
+            {
+                return this.m_ExistsInAbout;
+            }
+            set
+            {
+                this.m_ExistsInAbout = value;
+            }
+        }
+        private bool m_ExistsInAbout = false;
+
+
+        //Convert this to its own class pr list of string instead of string?
+        public string Issues
+        {
+            get
+            {
+                return this.m_Issues;
+            }
+            set
+            {
+                this.m_Issues = value;
+            }
+        }
+        private string m_Issues;
 
         #endregion ' Properties
 
@@ -165,6 +193,8 @@ namespace RimworldModOrginiser.DataObjects
 
                 var _XmlDescription = _AboutFile.DocumentElement.SelectSingleNode("/ModMetaData/description");
                 this.m_Description = _XmlDescription.InnerText;
+
+                this.m_ExistsInAbout = true;
             }
 
 
@@ -180,6 +210,7 @@ namespace RimworldModOrginiser.DataObjects
                 {
                     this.m_Dependencies.Add(_CurrentNode.InnerText);
                 }
+                this.ExistsInDependencies = true;
             }
 
             this.m_ExistsInDisk = true;
@@ -214,7 +245,77 @@ namespace RimworldModOrginiser.DataObjects
                 _Details.AppendLine(_Dependencie);
             }
 
+            if (this.Issues != null)
+            {
+                _Details.AppendLine("");
+                _Details.AppendLine("Issues:");
+                _Details.AppendLine(this.Issues);
+            }
+
             return _Details.ToString();
+        }
+
+        public bool isCore()
+        {
+            return string.Equals(this.Name, "Core");
+        }
+        public bool isActive()
+        {
+            return this.Sequence != ModManager.INACTIVE_SEQUENCE;
+        }
+
+        public void CheckIssues(ModManager parentManager)
+        {
+            StringBuilder _Problems = new StringBuilder();
+
+            if (this.isCore() && this.Sequence != 0)
+            {
+                _Problems.AppendLine("Core must be active and the first in the sequence");
+            }
+
+            if(!this.ExistsInDisk)
+            {
+                _Problems.AppendLine("Missing on Disk");
+            }
+            else
+            {
+                if (!this.ExistsInAbout)
+                {
+                    _Problems.AppendLine("Missing About.xml");
+                }
+                if (!this.ExistsInDependencies && !this.isCore())
+                {
+                    _Problems.AppendLine("Missing Dependencies.xml");
+                }
+            }
+
+
+            foreach (string _CurrentDependencyName in this.Dependencies)
+            {
+                ModDetails _CurrentDependency = parentManager.GetModByName(_CurrentDependencyName);
+
+                if (_CurrentDependency == null)
+                {
+                    _Problems.AppendLine("Missing Dependencie: " + _CurrentDependencyName);
+                }
+                else if (!_CurrentDependency.isActive()) 
+                {
+                    _Problems.AppendLine("Inactive Dependencie: " + _CurrentDependencyName);
+                }
+                else if(_CurrentDependency.Sequence > this.Sequence)
+                {
+                    _Problems.AppendLine("Dependencie later in load order: " + _CurrentDependencyName);
+                }
+            }
+
+
+
+            if (_Problems.Length == 0)
+            {
+              //  _Problems.AppendLine("No issues found");
+            }
+
+            this.Issues = _Problems.ToString();
         }
     }
 }

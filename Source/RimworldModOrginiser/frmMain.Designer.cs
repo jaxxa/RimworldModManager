@@ -45,7 +45,7 @@
             this.bsrcModDetails = new System.Windows.Forms.BindingSource(this.components);
             this.dgrvMods_SequenceDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgrvMods_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgrvMods_Problems = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Issues = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgrvMods_Author = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgrvMods_Url = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgrvMods_Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -69,7 +69,7 @@
             this.dgrvMods.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dgrvMods_SequenceDescription,
             this.dgrvMods_Name,
-            this.dgrvMods_Problems,
+            this.Issues,
             this.dgrvMods_Author,
             this.dgrvMods_Url,
             this.dgrvMods_Description});
@@ -218,12 +218,12 @@
             this.dgrvMods_Name.Name = "dgrvMods_Name";
             this.dgrvMods_Name.ReadOnly = true;
             // 
-            // dgrvMods_Problems
+            // Issues
             // 
-            this.dgrvMods_Problems.DataPropertyName = "Problems";
-            this.dgrvMods_Problems.HeaderText = "Problems";
-            this.dgrvMods_Problems.Name = "dgrvMods_Problems";
-            this.dgrvMods_Problems.ReadOnly = true;
+            this.Issues.DataPropertyName = "Issues";
+            this.Issues.HeaderText = "Issues";
+            this.Issues.Name = "Issues";
+            this.Issues.ReadOnly = true;
             // 
             // dgrvMods_Author
             // 
@@ -290,7 +290,7 @@
         private System.Windows.Forms.Button bttnTest;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgrvMods_SequenceDescription;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgrvMods_Name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgrvMods_Problems;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Issues;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgrvMods_Author;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgrvMods_Url;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgrvMods_Description;

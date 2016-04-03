@@ -42,12 +42,13 @@ namespace RimworldModOrginiser
 
             this.m_Manager.LoadModConfig(this.m_Config.SaveFolder);
 
+            this.m_Manager.CheckIssues();
+
             this.UpdateOrder();
         }
 
         private void toolModGrid_MoveUp_Click(object sender, EventArgs e)
         {
-            //this.FullSelect();
             this.SaveSelection();
 
             List<ModDetails> temp = new List<ModDetails>();
@@ -70,6 +71,8 @@ namespace RimworldModOrginiser
             //Update grid sequence
             this.UpdateOrder();
             //Reselect
+
+            this.m_Manager.CheckIssues();
 
             this.LoadSelection();
         }
@@ -97,6 +100,9 @@ namespace RimworldModOrginiser
             // dgrvMods.Sort(dgrvMods_Sequence, ListSortDirection.Descending);
             //Reselect
 
+
+            this.m_Manager.CheckIssues();
+
             this.LoadSelection();
         }
 
@@ -111,6 +117,10 @@ namespace RimworldModOrginiser
                 this.m_Manager.Toggle(_CurrentMod);
             }
             this.UpdateOrder();
+
+
+            this.m_Manager.CheckIssues();
+
             this.LoadSelection();
         }
 
