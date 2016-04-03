@@ -132,6 +132,19 @@ namespace RimworldModOrginiser.DataObjects
         }
         private bool m_ExistsInDisk = false;
 
+        public string Problems
+        {
+            get
+            {
+                return this.m_Problems;
+            }
+            set
+            {
+                this.m_Problems = value;
+            }
+        }
+        private string m_Problems;
+
         #endregion ' Properties
 
         public void load(string modFolder)

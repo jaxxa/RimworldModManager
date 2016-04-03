@@ -13,7 +13,9 @@ namespace RimworldModOrginiser
 {
     public partial class frmMain : Form
     {
-        RimworldModOrginiser.DataObjects.Manager m_Manager;
+        Manager m_Manager;
+
+        Config m_Config;
 
         private List<DataObjects.ModDetails> m_SelctedMods = new List<DataObjects.ModDetails>();
 
@@ -30,11 +32,16 @@ namespace RimworldModOrginiser
 
         private void bttnLoad_Click(object sender, EventArgs e)
         {
+            this.m_Config = new Config();
+
+            this.m_Config.Load();
+
+
             this.m_Manager = new RimworldModOrginiser.DataObjects.Manager();
 
-            this.m_Manager.LoadModList(@"C:\Games\RimWorldAlpha12dWin\RimWorld914Win");
+            this.m_Manager.LoadModList(this.m_Config.RimworldFolder);
 
-            this.m_Manager.LoadModConfig(@"C:\Games\RimWorld1123WinDev\SaveData");
+            this.m_Manager.LoadModConfig(this.m_Config.SaveFolder);
 
             this.UpdateOrder();
         }
