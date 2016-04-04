@@ -23,7 +23,7 @@ namespace RimworldModOrginiser
 
         ModManager m_Manager;
 
-        Config m_Config;
+        Settings m_Settings;
 
         private List<DataObjects.ModDetails> m_SelctedMods = new List<DataObjects.ModDetails>();
 
@@ -33,15 +33,15 @@ namespace RimworldModOrginiser
 
         private void bttnLoad_Click(object sender, EventArgs e)
         {
-            this.m_Config = new Config();
+            this.m_Settings = new Settings();
 
-            this.m_Config.Load();
+            this.m_Settings.Load();
             
             this.m_Manager = new RimworldModOrginiser.DataObjects.ModManager();
 
-            this.m_Manager.LoadModList(this.m_Config.RimworldFolder);
+            this.m_Manager.LoadModList(this.m_Settings.RimworldFolder);
 
-            this.m_Manager.LoadModConfig(this.m_Config.SaveFolder);
+            this.m_Manager.LoadModConfig(this.m_Settings.SaveFolder);
 
             this.m_Manager.CheckIssues();
 
@@ -210,7 +210,7 @@ namespace RimworldModOrginiser
 
         private void bttnSaveConfig_Click(object sender, EventArgs e)
         {
-            this.m_Manager.SaveConfig(this.m_Config.SaveFolder);
+            this.m_Manager.SaveConfig(this.m_Settings.SaveFolder);
         }
     }
 }

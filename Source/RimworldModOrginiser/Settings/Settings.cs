@@ -7,7 +7,7 @@ using System.Xml;
 
 namespace RimworldModOrginiser.DataObjects
 {
-    class Config
+    class Settings
     {
         public string RimworldFolder
         {
