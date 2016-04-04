@@ -145,7 +145,7 @@ namespace RimworldModOrginiser
             {
                 ModDetails _CurrentMod = (DataObjects.ModDetails)_CurrentCell.OwningRow.DataBoundItem;
 
-                this.txbxModDetails.Text = _CurrentMod.GetDetails();
+                this.txbxModDetails.Text = _CurrentMod.Details;
 
                 return;
 
@@ -208,5 +208,9 @@ namespace RimworldModOrginiser
 
         #endregion
 
+        private void bttnSaveConfig_Click(object sender, EventArgs e)
+        {
+            this.m_Manager.SaveConfig(this.m_Config.SaveFolder);
+        }
     }
 }

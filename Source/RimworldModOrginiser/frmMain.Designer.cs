@@ -129,7 +129,6 @@
             // bsrcModDetails
             // 
             this.bsrcModDetails.DataSource = typeof(RimworldModOrginiser.DataObjects.ModDetails);
-            this.bsrcModDetails.CurrentItemChanged += new System.EventHandler(this.bsrcModDetails_CurrentItemChanged);
             // 
             // toolModGrid
             // 
@@ -219,6 +218,7 @@
             this.bttnSaveConfig.TabIndex = 0;
             this.bttnSaveConfig.Text = "Save Config";
             this.bttnSaveConfig.UseVisualStyleBackColor = true;
+            this.bttnSaveConfig.Click += new System.EventHandler(this.bttnSaveConfig_Click);
             // 
             // splitModGridAndDetails
             // 

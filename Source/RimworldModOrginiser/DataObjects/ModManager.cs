@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
+using System.Xml.Linq;
 
 namespace RimworldModOrginiser.DataObjects
 {
@@ -26,6 +27,8 @@ namespace RimworldModOrginiser.DataObjects
             }
         }
         private List<ModDetails> m_ModList = new List<ModDetails>();
+
+        private int m_BuildNumber = INACTIVE_SEQUENCE;
 
         public void LoadModList(string rwFolder)
         {
@@ -94,6 +97,8 @@ namespace RimworldModOrginiser.DataObjects
             var _XmlBuildNumber = _XmlFileConfigFile.DocumentElement.SelectSingleNode("buildNumber");
 
             var _XmlactiveMods = _XmlFileConfigFile.DocumentElement.SelectSingleNode("activeMods");
+
+            this.m_BuildNumber = int.Parse(_XmlBuildNumber.InnerText);
 
             List<string> _ActiveMods = new List<string>();
 
@@ -219,6 +224,49 @@ namespace RimworldModOrginiser.DataObjects
             {
                 _CurrentMod.CheckIssues(this);
             }
+        }
+
+        public void SaveConfig(string saveFolder)
+        {
+            //Save the config 
+
+
+            // Check that the Save Folder exists
+            if (!System.IO.Directory.Exists(saveFolder))
+            {
+                MessageBox.Show("Save Folder not Found: " + saveFolder);
+                return;
+            }
+
+            string _RimworldConfigFolder = saveFolder + @"\Config";
+            //Check mods folder exists
+            if (!System.IO.Directory.Exists(_RimworldConfigFolder))
+            {
+                MessageBox.Show("Config Folder not Found:" + _RimworldConfigFolder);
+                return;
+            }
+
+            XDocument _Config = new XDocument();
+
+            XElement _ModsConfigData = new XElement("ModsConfigData");
+            _ModsConfigData.Add(new XElement("buildNumber", this.m_BuildNumber));
+
+            XElement _activeMods = new XElement("activeMods");
+            
+            foreach(ModDetails _CurrentMod in this.ModList)
+            {
+                if (_CurrentMod.Sequence != ModManager.INACTIVE_SEQUENCE)
+                {
+                    _activeMods.Add(new XElement( "li", _CurrentMod.Name));
+                }
+            }
+            
+            _ModsConfigData.Add(_activeMods);
+
+            _Config.Add(_ModsConfigData);
+            
+            _Config.Save(_RimworldConfigFolder + @"\TEST.xml");
+            
         }
     }
 }

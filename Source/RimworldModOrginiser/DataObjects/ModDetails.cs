@@ -162,7 +162,7 @@ namespace RimworldModOrginiser.DataObjects
             }
         }
 
-        public bool isCore
+        public bool IsCore
         {
             get
             {
@@ -170,7 +170,7 @@ namespace RimworldModOrginiser.DataObjects
             }
         }
 
-        public bool isActive
+        public bool IsActive
         {
             get
             {
@@ -283,7 +283,7 @@ namespace RimworldModOrginiser.DataObjects
         {
             StringBuilder _Problems = new StringBuilder();
 
-            if (this.isCore() && this.Sequence != 0)
+            if (this.IsCore && this.Sequence != 0)
             {
                 _Problems.AppendLine("Core must be active and the first in the sequence");
             }
@@ -298,7 +298,7 @@ namespace RimworldModOrginiser.DataObjects
                 {
                     _Problems.AppendLine("Missing About.xml");
                 }
-                if (!this.ExistsInDependencies && !this.isCore())
+                if (!this.ExistsInDependencies && !this.IsCore)
                 {
                     _Problems.AppendLine("Not Checked - No Dependencies.xml");
                 }
@@ -313,7 +313,7 @@ namespace RimworldModOrginiser.DataObjects
                 {
                     _Problems.AppendLine("Missing Dependencie: " + _CurrentDependencyName);
                 }
-                else if (!_CurrentDependency.isActive()) 
+                else if (!_CurrentDependency.IsActive) 
                 {
                     _Problems.AppendLine("Inactive Dependencie: " + _CurrentDependencyName);
                 }
