@@ -218,10 +218,7 @@ namespace RimworldModOrginiser.DataObjects
             foreach (ModDetails _CurrentMod in this.ModList)
             {
                 _CurrentMod.CheckIssues(this);
-                //_CurrentMod.Issues = "NA";
             }
-
-
         }
     }
 }

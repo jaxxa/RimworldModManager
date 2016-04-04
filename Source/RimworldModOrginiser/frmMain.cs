@@ -13,20 +13,21 @@ namespace RimworldModOrginiser
 {
     public partial class frmMain : Form
     {
-        ModManager m_Manager;
-
-        Config m_Config;
-
-        private List<DataObjects.ModDetails> m_SelctedMods = new List<DataObjects.ModDetails>();
 
         public frmMain()
         {
             InitializeComponent();
         }
 
-        private void frmMain_Load(object sender, EventArgs e)
-        {
-        }
+        #region Fields
+
+        ModManager m_Manager;
+
+        Config m_Config;
+
+        private List<DataObjects.ModDetails> m_SelctedMods = new List<DataObjects.ModDetails>();
+
+        #endregion Fields
 
         #region Gui Events
 
@@ -118,7 +119,6 @@ namespace RimworldModOrginiser
             }
             this.UpdateOrder();
 
-
             this.m_Manager.CheckIssues();
 
             this.LoadSelection();
@@ -133,7 +133,45 @@ namespace RimworldModOrginiser
             dgrvMods.Refresh();
         }
 
+
+        private void bsrcModDetails_CurrentItemChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgrvMods_SelectionChanged(object sender, EventArgs e)
+        {
+
+            foreach (DataGridViewCell _CurrentCell in dgrvMods.SelectedCells)
+            {
+                ModDetails _CurrentMod = (DataObjects.ModDetails)_CurrentCell.OwningRow.DataBoundItem;
+
+                this.txbxModDetails.Text = _CurrentMod.GetDetails();
+
+                return;
+
+            }
+
+            this.txbxModDetails.Text = null;
+        }
+
+        private void dgrvMods_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0 || e.ColumnIndex < 0)
+            {
+                return;
+            }
+            this.toolModGrid_Toggle_Click(sender, e);
+        }
+
+        private void bttnTest_Click(object sender, EventArgs e)
+        {
+            this.m_Manager.CheckIssues();
+        }
+
         #endregion
+
+        #region Methods
 
         private void SaveSelection()
         {
@@ -174,39 +212,8 @@ namespace RimworldModOrginiser
             }
         }
 
-        private void bsrcModDetails_CurrentItemChanged(object sender, EventArgs e)
-        {
+        #endregion
 
-        }
 
-        private void dgrvMods_SelectionChanged(object sender, EventArgs e)
-        {
-
-            foreach (DataGridViewCell _CurrentCell in dgrvMods.SelectedCells)
-            {
-                ModDetails _CurrentMod = (DataObjects.ModDetails)_CurrentCell.OwningRow.DataBoundItem;
-
-                this.txbxModDetails.Text = _CurrentMod.GetDetails();
-
-                return;
-
-            }
-
-            this.txbxModDetails.Text = null;
-        }
-
-        private void dgrvMods_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex < 0 || e.ColumnIndex < 0 )
-            {
-                return;
-            }
-            this.toolModGrid_Toggle_Click(sender, e);
-        }
-
-        private void bttnTest_Click(object sender, EventArgs e)
-        {
-            this.m_Manager.CheckIssues();
-        }
     }
 }

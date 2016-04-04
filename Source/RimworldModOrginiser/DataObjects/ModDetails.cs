@@ -12,6 +12,8 @@ namespace RimworldModOrginiser.DataObjects
         
         #region Properties
 
+        //Data storage properties--------------------------
+
         public string Name
         {
             get
@@ -90,22 +92,7 @@ namespace RimworldModOrginiser.DataObjects
             }
         }
         private int m_Sequence = ModManager.INACTIVE_SEQUENCE;
-
-        public string SequenceDescription
-        {
-            get
-            {
-                if (int.Equals(this.Sequence,ModManager.INACTIVE_SEQUENCE)  )
-                {
-                    return "Inactive";
-                }
-                else
-                {
-                    return this.Sequence.ToString();
-                }
-            }
-        }
-
+        
         public bool ExistsInConfig
         {
             get
@@ -158,8 +145,70 @@ namespace RimworldModOrginiser.DataObjects
         }
         private bool m_ExistsInAbout = false;
 
+        //Helper Properties---------------------------------------------------------
+        
+        public string SequenceDescription
+        {
+            get
+            {
+                if (int.Equals(this.Sequence, ModManager.INACTIVE_SEQUENCE))
+                {
+                    return "Inactive";
+                }
+                else
+                {
+                    return this.Sequence.ToString();
+                }
+            }
+        }
 
-        //Convert this to its own class pr list of string instead of string?
+        public bool isCore
+        {
+            get
+            {
+                return string.Equals(this.Name, "Core");
+            }
+        }
+
+        public bool isActive
+        {
+            get
+            {
+                return this.Sequence != ModManager.INACTIVE_SEQUENCE;
+            }
+        }
+        
+        public string Details
+        {
+            get
+            {
+                StringBuilder _Details = new StringBuilder();
+
+                _Details.AppendLine("Name:" + this.Name);
+                _Details.AppendLine("Sequence:" + this.Sequence.ToString());
+                _Details.AppendLine("Author:" + this.Author);
+                _Details.AppendLine("Description:" + this.Description);
+                _Details.AppendLine("URL:" + this.Url);
+                _Details.AppendLine("");
+                _Details.AppendLine("Dependencies:");
+
+                foreach (string _Dependencie in this.Dependencies)
+                {
+                    _Details.AppendLine(_Dependencie);
+                }
+
+                if (this.Issues != null)
+                {
+                    _Details.AppendLine("");
+                    _Details.AppendLine("Issues:");
+                    _Details.AppendLine(this.Issues);
+                }
+
+                return _Details.ToString();
+            }
+        }
+
+        //Convert this to its own class list of string instead of string?
         public string Issues
         {
             get
@@ -175,6 +224,8 @@ namespace RimworldModOrginiser.DataObjects
 
         #endregion ' Properties
 
+        #region Methods
+        
         public void load(string modFolder)
         {
             if (System.IO.File.Exists(modFolder + @"\About\About.xml"))
@@ -227,43 +278,7 @@ namespace RimworldModOrginiser.DataObjects
             return "ModDetails: " + this.Sequence + " : " + this.Name;
             //return base.ToString();
         }
-
-        public string GetDetails()
-        {
-            StringBuilder _Details = new StringBuilder();
-
-            _Details.AppendLine("Name:" + this.Name);
-            _Details.AppendLine("Sequence:" + this.Sequence.ToString());
-            _Details.AppendLine("Author:" + this.Author);
-            _Details.AppendLine("Description:" + this.Description);
-            _Details.AppendLine("URL:" + this.Url);
-            _Details.AppendLine("");
-            _Details.AppendLine("Dependencies:");
-
-            foreach (string _Dependencie in this.Dependencies)
-            {
-                _Details.AppendLine(_Dependencie);
-            }
-
-            if (this.Issues != null)
-            {
-                _Details.AppendLine("");
-                _Details.AppendLine("Issues:");
-                _Details.AppendLine(this.Issues);
-            }
-
-            return _Details.ToString();
-        }
-
-        public bool isCore()
-        {
-            return string.Equals(this.Name, "Core");
-        }
-        public bool isActive()
-        {
-            return this.Sequence != ModManager.INACTIVE_SEQUENCE;
-        }
-
+        
         public void CheckIssues(ModManager parentManager)
         {
             StringBuilder _Problems = new StringBuilder();
@@ -285,7 +300,7 @@ namespace RimworldModOrginiser.DataObjects
                 }
                 if (!this.ExistsInDependencies && !this.isCore())
                 {
-                    _Problems.AppendLine("Missing Dependencies.xml");
+                    _Problems.AppendLine("Not Checked - No Dependencies.xml");
                 }
             }
 
@@ -307,9 +322,7 @@ namespace RimworldModOrginiser.DataObjects
                     _Problems.AppendLine("Dependencie later in load order: " + _CurrentDependencyName);
                 }
             }
-
-
-
+            
             if (_Problems.Length == 0)
             {
               //  _Problems.AppendLine("No issues found");
@@ -317,5 +330,8 @@ namespace RimworldModOrginiser.DataObjects
 
             this.Issues = _Problems.ToString();
         }
+        
+        #endregion
+
     }
 }

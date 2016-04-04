@@ -257,7 +257,6 @@
             this.MinimumSize = new System.Drawing.Size(750, 500);
             this.Name = "frmMain";
             this.Text = "Rimworld Mod Orginiser";
-            this.Load += new System.EventHandler(this.frmMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgrvMods)).EndInit();
             this.toolModGrid.ResumeLayout(false);
             this.toolModGrid.PerformLayout();
