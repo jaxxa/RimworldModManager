@@ -47,6 +47,11 @@ namespace RimworldModOrginiser
 
             this.UpdateOrder();
         }
+        
+        private void bttnTest_Click(object sender, EventArgs e)
+        {
+            this.m_Manager.CheckIssues();
+        }
 
         private void toolModGrid_MoveUp_Click(object sender, EventArgs e)
         {
@@ -124,19 +129,13 @@ namespace RimworldModOrginiser
             this.LoadSelection();
         }
 
-        private void UpdateOrder()
+        private void dgrvMods_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-
-            this.m_Manager.Reorder();
-            dgrvMods.DataSource = null;
-            dgrvMods.DataSource = m_Manager.ModList;
-            dgrvMods.Refresh();
-        }
-
-
-        private void bsrcModDetails_CurrentItemChanged(object sender, EventArgs e)
-        {
-
+            if (e.RowIndex < 0 || e.ColumnIndex < 0)
+            {
+                return;
+            }
+            this.toolModGrid_Toggle_Click(sender, e);
         }
 
         private void dgrvMods_SelectionChanged(object sender, EventArgs e)
@@ -154,21 +153,7 @@ namespace RimworldModOrginiser
 
             this.txbxModDetails.Text = null;
         }
-
-        private void dgrvMods_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex < 0 || e.ColumnIndex < 0)
-            {
-                return;
-            }
-            this.toolModGrid_Toggle_Click(sender, e);
-        }
-
-        private void bttnTest_Click(object sender, EventArgs e)
-        {
-            this.m_Manager.CheckIssues();
-        }
-
+        
         #endregion
 
         #region Methods
@@ -200,6 +185,15 @@ namespace RimworldModOrginiser
             }
         }
 
+        private void UpdateOrder()
+        {
+
+            this.m_Manager.Reorder();
+            dgrvMods.DataSource = null;
+            dgrvMods.DataSource = m_Manager.ModList;
+            dgrvMods.Refresh();
+        }
+
         /// <summary>
         /// Select all rows that have atleast one cell selected.
         /// </summary>
@@ -213,7 +207,6 @@ namespace RimworldModOrginiser
         }
 
         #endregion
-
 
     }
 }
