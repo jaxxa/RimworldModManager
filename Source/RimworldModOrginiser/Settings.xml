@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<RimworldModOrginiser>
+  <RMOProfiles>
+    <Profile>
+      <RimworldFolder>C:\Games\RimWorldAlpha12dWin\RimWorld914Win</RimworldFolder>
+      <SaveFolder>C:\Games\RimWorld1123WinDev\SaveData</SaveFolder>
+    </Profile>
+    <Profile>
+      <RimworldFolder>C:\Games\RimWorldAlpha12dWin\V2</RimworldFolder>
+      <SaveFolder>C:\Games\RimWorld1123WinDev\V2</SaveFolder>
+    </Profile>
+  </RMOProfiles>
+</RimworldModOrginiser>
