@@ -265,7 +265,7 @@ namespace RimworldModOrginiser.DataObjects
 
             _Config.Add(_ModsConfigData);
             
-            _Config.Save(_RimworldConfigFolder + @"\TEST.xml");
+            _Config.Save(_RimworldConfigFolder + @"\ModsConfig.xml");
             
         }
     }

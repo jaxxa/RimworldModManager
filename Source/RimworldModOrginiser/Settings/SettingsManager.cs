@@ -50,10 +50,8 @@ namespace RimworldModOrginiser.ProgramSettings
                     _NewProfile.SaveFolder = _XmlSaveFolder.InnerText;
 
                     this.Profiles.Add(_NewProfile);
-
-                }
-
-               
+                
+                }       
             }
         }
 

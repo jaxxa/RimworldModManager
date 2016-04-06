@@ -31,6 +31,7 @@ namespace RimworldModOrginiser
 
         private void bttnOk_Click(object sender, EventArgs e)
         {
+            this.m_SettingManager.ActiveProfile = (ProgramSettings.Profile)this.bsrcSettings.Current;
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
