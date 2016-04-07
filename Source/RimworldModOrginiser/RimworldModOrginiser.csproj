@@ -53,6 +53,12 @@
     <Compile Include="frmSettings.Designer.cs">
       <DependentUpon>frmSettings.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmNewProfile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNewProfile.Designer.cs">
+      <DependentUpon>frmNewProfile.cs</DependentUpon>
+    </Compile>
     <Compile Include="Settings\Profile.cs" />
     <Compile Include="Settings\SettingsManager.cs" />
     <Compile Include="DataObjects\ModManager.cs" />
@@ -70,6 +76,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmSettings.resx">
       <DependentUpon>frmSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNewProfile.resx">
+      <DependentUpon>frmNewProfile.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

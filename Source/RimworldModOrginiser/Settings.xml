@@ -9,5 +9,9 @@
       <RimworldFolder>C:\Games\RimWorldAlpha12dWin\V2</RimworldFolder>
       <SaveFolder>C:\Games\RimWorld1123WinDev\V2</SaveFolder>
     </Profile>
+    <Profile>
+      <RimworldFolder>C:\Games\RimWorld1135Win</RimworldFolder>
+      <SaveFolder>C:\Games\RimWorld1135Win\SaveData</SaveFolder>
+    </Profile>
   </RMOProfiles>
 </RimworldModOrginiser>

@@ -31,6 +31,7 @@ namespace RimworldModOrginiser
 
         private void bttnOk_Click(object sender, EventArgs e)
         {
+            this.m_SettingManager.Save();
             this.m_SettingManager.ActiveProfile = (ProgramSettings.Profile)this.bsrcSettings.Current;
             this.DialogResult = DialogResult.OK;
             this.Close();
@@ -38,12 +39,23 @@ namespace RimworldModOrginiser
 
         private void bttnNew_Click(object sender, EventArgs e)
         {
+            ProgramSettings.Profile _NewProfile = frmNewProfile.GetNewProfile();
 
+            if (_NewProfile != null)
+            {
+                this.m_SettingManager.Profiles.Add(_NewProfile);
+            }
+
+            this.bsrcSettings.DataSource = null;
+            this.bsrcSettings.DataSource = this.m_SettingManager.Profiles;
+            this.dgrvSettings.Refresh();
         }
 
         private void bttnDelete_Click(object sender, EventArgs e)
         {
-
+           // this.m_SettingManager.Profiles.Remove((ProgramSettings.Profile)this.bsrcSettings.Current);
+            this.bsrcSettings.Remove((ProgramSettings.Profile)this.bsrcSettings.Current);
+            this.dgrvSettings.Refresh();
         }
 
         private void bttnCancel_Click(object sender, EventArgs e)

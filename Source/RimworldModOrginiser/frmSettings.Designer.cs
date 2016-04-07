@@ -30,13 +30,13 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dgrvSettings = new System.Windows.Forms.DataGridView();
+            this.rimworldFolderDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.saveFolderDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bsrcSettings = new System.Windows.Forms.BindingSource(this.components);
             this.bttnCancel = new System.Windows.Forms.Button();
             this.bttnOk = new System.Windows.Forms.Button();
             this.bttnNew = new System.Windows.Forms.Button();
             this.bttnDelete = new System.Windows.Forms.Button();
-            this.rimworldFolderDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.saveFolderDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bsrcSettings = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgrvSettings)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsrcSettings)).BeginInit();
             this.SuspendLayout();
@@ -58,10 +58,31 @@
             this.dgrvSettings.DataSource = this.bsrcSettings;
             this.dgrvSettings.Location = new System.Drawing.Point(12, 12);
             this.dgrvSettings.Name = "dgrvSettings";
+            this.dgrvSettings.ReadOnly = true;
             this.dgrvSettings.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgrvSettings.Size = new System.Drawing.Size(560, 358);
             this.dgrvSettings.TabIndex = 0;
             this.dgrvSettings.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgrvSettings_CellContentClick);
+            // 
+            // rimworldFolderDataGridViewTextBoxColumn
+            // 
+            this.rimworldFolderDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.rimworldFolderDataGridViewTextBoxColumn.DataPropertyName = "RimworldFolder";
+            this.rimworldFolderDataGridViewTextBoxColumn.HeaderText = "RimworldFolder";
+            this.rimworldFolderDataGridViewTextBoxColumn.Name = "rimworldFolderDataGridViewTextBoxColumn";
+            this.rimworldFolderDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // saveFolderDataGridViewTextBoxColumn
+            // 
+            this.saveFolderDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.saveFolderDataGridViewTextBoxColumn.DataPropertyName = "SaveFolder";
+            this.saveFolderDataGridViewTextBoxColumn.HeaderText = "SaveFolder";
+            this.saveFolderDataGridViewTextBoxColumn.Name = "saveFolderDataGridViewTextBoxColumn";
+            this.saveFolderDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // bsrcSettings
+            // 
+            this.bsrcSettings.DataSource = typeof(RimworldModOrginiser.ProgramSettings.Profile);
             // 
             // bttnCancel
             // 
@@ -106,24 +127,6 @@
             this.bttnDelete.Text = "Delete";
             this.bttnDelete.UseVisualStyleBackColor = true;
             this.bttnDelete.Click += new System.EventHandler(this.bttnDelete_Click);
-            // 
-            // rimworldFolderDataGridViewTextBoxColumn
-            // 
-            this.rimworldFolderDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.rimworldFolderDataGridViewTextBoxColumn.DataPropertyName = "RimworldFolder";
-            this.rimworldFolderDataGridViewTextBoxColumn.HeaderText = "RimworldFolder";
-            this.rimworldFolderDataGridViewTextBoxColumn.Name = "rimworldFolderDataGridViewTextBoxColumn";
-            // 
-            // saveFolderDataGridViewTextBoxColumn
-            // 
-            this.saveFolderDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.saveFolderDataGridViewTextBoxColumn.DataPropertyName = "SaveFolder";
-            this.saveFolderDataGridViewTextBoxColumn.HeaderText = "SaveFolder";
-            this.saveFolderDataGridViewTextBoxColumn.Name = "saveFolderDataGridViewTextBoxColumn";
-            // 
-            // bsrcSettings
-            // 
-            this.bsrcSettings.DataSource = typeof(RimworldModOrginiser.ProgramSettings.Profile);
             // 
             // frmSettings
             // 
