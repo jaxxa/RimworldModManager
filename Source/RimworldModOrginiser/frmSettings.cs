@@ -46,14 +46,33 @@ namespace RimworldModOrginiser
                 this.m_SettingManager.Profiles.Add(_NewProfile);
             }
 
+
             this.bsrcSettings.DataSource = null;
             this.bsrcSettings.DataSource = this.m_SettingManager.Profiles;
             this.dgrvSettings.Refresh();
+
+            dgrvSettings.ClearSelection();
+
+            foreach (DataGridViewRow _CurrentRow in dgrvSettings.Rows)
+            {
+                ProgramSettings.Profile _CurrentRowItem = (ProgramSettings.Profile)_CurrentRow.DataBoundItem;
+
+                if (_NewProfile == _CurrentRowItem)
+                {
+                    _CurrentRow.Selected = true;
+                    dgrvSettings.CurrentCell = dgrvSettings.Rows[_CurrentRow.Cells[0].RowIndex].Cells[0];
+                }
+                else
+                {
+                    _CurrentRow.Selected = false;
+                }
+            }
+
         }
 
         private void bttnDelete_Click(object sender, EventArgs e)
         {
-           // this.m_SettingManager.Profiles.Remove((ProgramSettings.Profile)this.bsrcSettings.Current);
+            // this.m_SettingManager.Profiles.Remove((ProgramSettings.Profile)this.bsrcSettings.Current);
             this.bsrcSettings.Remove((ProgramSettings.Profile)this.bsrcSettings.Current);
             this.dgrvSettings.Refresh();
         }

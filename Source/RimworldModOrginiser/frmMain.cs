@@ -50,13 +50,18 @@ namespace RimworldModOrginiser
             this.m_Manager.CheckIssues();
 
             this.UpdateOrder();
+
+            if (this.m_SettingsManager.ActiveProfile == null)
+            {
+                lblProfile.Text = "No Profile Loaded";
+            }
+            else
+            {
+                lblProfile.Text = this.m_SettingsManager.ActiveProfile.ToString();
+            }
+
         }
         
-        private void bttnTest_Click(object sender, EventArgs e)
-        {
-            this.m_Manager.CheckIssues();
-        }
-
         private void toolModGrid_MoveUp_Click(object sender, EventArgs e)
         {
             this.SaveSelection();

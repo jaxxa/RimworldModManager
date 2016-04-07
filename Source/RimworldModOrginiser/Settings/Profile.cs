@@ -35,5 +35,11 @@ namespace RimworldModOrginiser.ProgramSettings
         }
         string m_SaveFolder;
 
+        public override string ToString()
+        {
+            return "RimworldFolder: " + this.RimworldFolder + Environment.NewLine + " SaveFolder: " + this.SaveFolder;
+            //return base.ToString(); 
+        }
+
     }
 }

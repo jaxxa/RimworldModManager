@@ -145,6 +145,7 @@
             this.MinimumSize = new System.Drawing.Size(400, 300);
             this.Name = "frmNewProfile";
             this.Text = "NewProfile";
+            this.Load += new System.EventHandler(this.frmNewProfile_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

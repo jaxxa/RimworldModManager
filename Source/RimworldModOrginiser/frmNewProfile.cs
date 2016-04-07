@@ -69,5 +69,12 @@ namespace RimworldModOrginiser
                 this.txbxSaveFolder.Text = _ChooseDialog.SelectedPath;
             }
         }
+
+        private void frmNewProfile_Load(object sender, EventArgs e)
+        {
+            this.txbxSaveFolder.Text = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) +
+                                                                 @"Low\Ludeon Studios\RimWorld";
+        }
+
     }
 }
