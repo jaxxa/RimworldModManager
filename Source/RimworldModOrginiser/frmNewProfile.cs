@@ -50,6 +50,7 @@ namespace RimworldModOrginiser
         {
             FolderBrowserDialog _ChooseDialog = new FolderBrowserDialog();
             _ChooseDialog.SelectedPath = this.txbxRimworldFolder.Text;
+            _ChooseDialog.Description = "Please select the folder that contains Rimworld.exe";
             DialogResult _Result = _ChooseDialog.ShowDialog();
 
             if (_Result == DialogResult.OK)
@@ -62,6 +63,7 @@ namespace RimworldModOrginiser
         {
             FolderBrowserDialog _ChooseDialog = new FolderBrowserDialog();
             _ChooseDialog.SelectedPath = this.txbxSaveFolder.Text;
+            _ChooseDialog.Description = "Please select the folder that contains the 'Saves' folder. If you are not overriding it the default should already be selected.";
             DialogResult _Result = _ChooseDialog.ShowDialog();
 
             if (_Result == DialogResult.OK)

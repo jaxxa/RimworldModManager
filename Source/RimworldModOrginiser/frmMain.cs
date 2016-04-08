@@ -61,7 +61,7 @@ namespace RimworldModOrginiser
             }
 
         }
-        
+
         private void toolModGrid_MoveUp_Click(object sender, EventArgs e)
         {
             this.SaveSelection();
@@ -162,7 +162,7 @@ namespace RimworldModOrginiser
 
             this.txbxModDetails.Text = null;
         }
-        
+
         #endregion
 
         #region Methods
@@ -220,6 +220,46 @@ namespace RimworldModOrginiser
         private void bttnSaveConfig_Click(object sender, EventArgs e)
         {
             this.m_Manager.SaveConfig(this.m_SettingsManager.SaveFolder);
+        }
+
+        private void bttnSaveAndRun_Click(object sender, EventArgs e)
+        {
+
+            this.m_Manager.SaveConfig(this.m_SettingsManager.SaveFolder);
+
+            string _FilePath = this.FindExecutable(this.m_SettingsManager.RimworldFolder);
+
+            if (_FilePath != null)
+            {
+
+                System.Diagnostics.Process.Start(_FilePath,
+                   " -savedatafolder=" + this.m_SettingsManager.SaveFolder);
+            }
+        }
+
+        private string FindExecutable(String folderPath)
+        {
+            if (!System.IO.Directory.Exists(folderPath))
+            {
+                return null;
+            }
+
+            string[] files = System.IO.Directory.GetFiles(folderPath);
+
+            foreach (string _FileFullPath in files)
+            {
+                string _Extention = System.IO.Path.GetExtension(_FileFullPath);
+                if (_Extention == ".exe")
+                {
+                    string _FileName = System.IO.Path.GetFileNameWithoutExtension(_FileFullPath);
+                    if (_FileName.Contains("RimWorld"))
+                    {
+                        return _FileFullPath;
+                    }
+                }
+            }
+
+            return null;
         }
     }
 }
