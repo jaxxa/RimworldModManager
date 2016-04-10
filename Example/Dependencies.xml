@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ModDependencieMetaData>
+  <Dependencies>
+	<mod>
+		<name>ED-OmniGel</name>
+		<description></description>
+		<reason></reason>
+		<url></url>
+	</mod>
+	<mod>
+		<name>ED-Plants24H</name>
+		<description></description>
+		<reason></reason>
+		<url></url>
+	</mod>
+  </Dependencies>
+</ModDependencieMetaData>
