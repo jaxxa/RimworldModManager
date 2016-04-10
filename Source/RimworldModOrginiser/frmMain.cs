@@ -233,7 +233,7 @@ namespace RimworldModOrginiser
             {
 
                 System.Diagnostics.Process.Start(_FilePath,
-                   " -savedatafolder=" + this.m_SettingsManager.SaveFolder);
+                   "\" -savedatafolder=" + this.m_SettingsManager.SaveFolder + "\"");
             }
         }
 
