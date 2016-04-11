@@ -25,7 +25,7 @@ namespace RimworldModOrginiser.ProgramSettings
             }
         }
 
-        public string SaveFolder
+        public string ConfigFolder
         {
             get
             {
@@ -35,10 +35,9 @@ namespace RimworldModOrginiser.ProgramSettings
                     return null;
                 }
 
-                return this.ActiveProfile.SaveFolder;
+                return this.ActiveProfile.ConfigFolder;
             }
         }
-        string m_SaveFolder;
 
         public void Load()
         {
@@ -57,8 +56,8 @@ namespace RimworldModOrginiser.ProgramSettings
                     var _XmlRimworldFolder = _XmlProfile.SelectSingleNode(@"RimworldFolder");
                     _NewProfile.RimworldFolder = _XmlRimworldFolder.InnerText;
 
-                    var _XmlSaveFolder = _XmlProfile.SelectSingleNode(@"SaveFolder");
-                    _NewProfile.SaveFolder = _XmlSaveFolder.InnerText;
+                    var _XmlConfigFolder = _XmlProfile.SelectSingleNode(@"ConfigFolder");
+                    _NewProfile.ConfigFolder = _XmlConfigFolder.InnerText;
 
                     this.Profiles.Add(_NewProfile);
 
@@ -79,7 +78,7 @@ namespace RimworldModOrginiser.ProgramSettings
             {
                 XElement _XmlProfile = new XElement("Profile");
                 _XmlProfile.Add(new XElement("RimworldFolder", _CurrentProfile.RimworldFolder));
-                _XmlProfile.Add(new XElement("SaveFolder", _CurrentProfile.SaveFolder));
+                _XmlProfile.Add(new XElement("ConfigFolder", _CurrentProfile.ConfigFolder));
 
                 _XmlRMOProfiles.Add(_XmlProfile);
             }

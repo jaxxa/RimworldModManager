@@ -45,7 +45,7 @@ namespace RimworldModOrginiser
 
             this.m_Manager.LoadModList(this.m_SettingsManager.RimworldFolder);
 
-            this.m_Manager.LoadModConfig(this.m_SettingsManager.SaveFolder);
+            this.m_Manager.LoadModConfig(this.m_SettingsManager.ConfigFolder);
 
             this.m_Manager.CheckIssues();
 
@@ -219,13 +219,13 @@ namespace RimworldModOrginiser
 
         private void bttnSaveConfig_Click(object sender, EventArgs e)
         {
-            this.m_Manager.SaveConfig(this.m_SettingsManager.SaveFolder);
+            this.m_Manager.SaveConfig(this.m_SettingsManager.ConfigFolder);
         }
 
         private void bttnSaveAndRun_Click(object sender, EventArgs e)
         {
 
-            this.m_Manager.SaveConfig(this.m_SettingsManager.SaveFolder);
+            this.m_Manager.SaveConfig(this.m_SettingsManager.ConfigFolder);
 
             string _FilePath = this.FindExecutable(this.m_SettingsManager.RimworldFolder);
 
@@ -233,7 +233,7 @@ namespace RimworldModOrginiser
             {
 
                 System.Diagnostics.Process.Start(_FilePath,
-                   "\" -savedatafolder=" + this.m_SettingsManager.SaveFolder + "\"");
+                   "\" -savedatafolder=" + this.m_SettingsManager.ConfigFolder + "\"");
             }
         }
 

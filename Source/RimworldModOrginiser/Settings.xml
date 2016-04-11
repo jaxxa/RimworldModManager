@@ -3,15 +3,15 @@
   <RMOProfiles>
     <Profile>
       <RimworldFolder>C:\Games\RimWorldAlpha12dWin\RimWorld914Win</RimworldFolder>
-      <SaveFolder>C:\Games\RimWorld1123WinDev\SaveData</SaveFolder>
+      <ConfigFolder>C:\Games\RimWorld1123WinDev\SaveData</ConfigFolder>
     </Profile>
     <Profile>
       <RimworldFolder>C:\Games\RimWorldAlpha12dWin\V2</RimworldFolder>
-      <SaveFolder>C:\Games\RimWorld1123WinDev\V2</SaveFolder>
-    </Profile>
+      <ConfigFolder>C:\Games\RimWorld1123WinDev\V2</ConfigFolder>
+  </Profile>
     <Profile>
       <RimworldFolder>C:\Games\RimWorld1135Win</RimworldFolder>
-      <SaveFolder>C:\Games\RimWorld1135Win\SaveData</SaveFolder>
+      <ConfigFolder>C:\Games\RimWorld1135Win\SaveData</ConfigFolder>
     </Profile>
   </RMOProfiles>
 </RimworldModOrginiser>

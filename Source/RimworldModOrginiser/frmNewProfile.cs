@@ -39,7 +39,7 @@ namespace RimworldModOrginiser
                 RimworldModOrginiser.ProgramSettings.Profile _NewProfile = new ProgramSettings.Profile();
 
                 _NewProfile.RimworldFolder = _frmNewProfile.txbxRimworldFolder.Text;
-                _NewProfile.SaveFolder = _frmNewProfile.txbxSaveFolder.Text;
+                _NewProfile.ConfigFolder = _frmNewProfile.txbxConfigFolder.Text;
 
                 return _NewProfile;
             }
@@ -62,19 +62,19 @@ namespace RimworldModOrginiser
         private void bttnChooseSaveFolder_Click(object sender, EventArgs e)
         {
             FolderBrowserDialog _ChooseDialog = new FolderBrowserDialog();
-            _ChooseDialog.SelectedPath = this.txbxSaveFolder.Text;
-            _ChooseDialog.Description = "Please select the folder that contains the 'Saves' folder. If you are not overriding it the default should already be selected.";
+            _ChooseDialog.SelectedPath = this.txbxConfigFolder.Text;
+            _ChooseDialog.Description = "Please select the Config Folder that contains the 'Saves' folder. If you are not overriding it the default should already be selected. If you are overriding it this will be the folder that   you pass in as a paramiter to Rimworld. Note that this will need to be a full path or relitive to this program.";
             DialogResult _Result = _ChooseDialog.ShowDialog();
 
             if (_Result == DialogResult.OK)
             {
-                this.txbxSaveFolder.Text = _ChooseDialog.SelectedPath;
+                this.txbxConfigFolder.Text = _ChooseDialog.SelectedPath;
             }
         }
 
         private void frmNewProfile_Load(object sender, EventArgs e)
         {
-            this.txbxSaveFolder.Text = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) +
+            this.txbxConfigFolder.Text = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) +
                                                                  @"Low\Ludeon Studios\RimWorld";
         }
 

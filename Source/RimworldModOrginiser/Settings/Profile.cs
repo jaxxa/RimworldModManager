@@ -22,22 +22,22 @@ namespace RimworldModOrginiser.ProgramSettings
         }
         string m_RimworldFolder;
 
-        public string SaveFolder
+        public string ConfigFolder
         {
             get
             {
-                return this.m_SaveFolder;
+                return this.m_ConfigFolder;
             }
             set
             {
-                this.m_SaveFolder = value;
+                this.m_ConfigFolder = value;
             }
         }
-        string m_SaveFolder;
+        string m_ConfigFolder;
 
         public override string ToString()
         {
-            return "RimworldFolder: " + this.RimworldFolder + Environment.NewLine + " SaveFolder: " + this.SaveFolder;
+            return "RimworldFolder: " + this.RimworldFolder + Environment.NewLine + " ConfigFolder: " + this.ConfigFolder;
             //return base.ToString(); 
         }
 
