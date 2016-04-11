@@ -301,10 +301,10 @@ namespace RimworldModOrginiser.DataObjects
                 if (!this.ExistsInDependencies && !this.IsCore)
                 {
                     _Problems.AppendLine("Not Checked - No Dependencies.xml");
+                   // _Problems.AppendLine("-");
                 }
             }
-
-
+            
             foreach (string _CurrentDependencyName in this.Dependencies)
             {
                 ModDetails _CurrentDependency = parentManager.GetModByName(_CurrentDependencyName);

@@ -32,12 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.dgrvMods = new System.Windows.Forms.DataGridView();
             this.dgrvMods_SequenceDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgrvMods_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Issues = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgrvMods_Author = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgrvMods_Url = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgrvMods_Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bsrcModDetails = new System.Windows.Forms.BindingSource(this.components);
             this.toolModGrid = new System.Windows.Forms.ToolStrip();
             this.toolModGrid_MoveUp = new System.Windows.Forms.ToolStripButton();
             this.toolModGrid_MoveDown = new System.Windows.Forms.ToolStripButton();
@@ -52,14 +47,19 @@
             this.splitModGridAndDetails = new System.Windows.Forms.SplitContainer();
             this.txbxModDetails = new System.Windows.Forms.TextBox();
             this.directoryEntry1 = new System.DirectoryServices.DirectoryEntry();
+            this.dgrvMods_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgrvMods_Author = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgrvMods_Url = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgrvMods_Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bsrcModDetails = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgrvMods)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsrcModDetails)).BeginInit();
             this.toolModGrid.SuspendLayout();
             this.panelFooter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitModGridAndDetails)).BeginInit();
             this.splitModGridAndDetails.Panel1.SuspendLayout();
             this.splitModGridAndDetails.Panel2.SuspendLayout();
             this.splitModGridAndDetails.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bsrcModDetails)).BeginInit();
             this.SuspendLayout();
             // 
             // dgrvMods
@@ -93,44 +93,12 @@
             this.dgrvMods_SequenceDescription.Name = "dgrvMods_SequenceDescription";
             this.dgrvMods_SequenceDescription.ReadOnly = true;
             // 
-            // dgrvMods_Name
-            // 
-            this.dgrvMods_Name.DataPropertyName = "Name";
-            this.dgrvMods_Name.HeaderText = "Name";
-            this.dgrvMods_Name.Name = "dgrvMods_Name";
-            this.dgrvMods_Name.ReadOnly = true;
-            // 
             // Issues
             // 
             this.Issues.DataPropertyName = "Issues";
             this.Issues.HeaderText = "Issues";
             this.Issues.Name = "Issues";
             this.Issues.ReadOnly = true;
-            // 
-            // dgrvMods_Author
-            // 
-            this.dgrvMods_Author.DataPropertyName = "Author";
-            this.dgrvMods_Author.HeaderText = "Author";
-            this.dgrvMods_Author.Name = "dgrvMods_Author";
-            this.dgrvMods_Author.ReadOnly = true;
-            // 
-            // dgrvMods_Url
-            // 
-            this.dgrvMods_Url.DataPropertyName = "Url";
-            this.dgrvMods_Url.HeaderText = "Url";
-            this.dgrvMods_Url.Name = "dgrvMods_Url";
-            this.dgrvMods_Url.ReadOnly = true;
-            // 
-            // dgrvMods_Description
-            // 
-            this.dgrvMods_Description.DataPropertyName = "Description";
-            this.dgrvMods_Description.HeaderText = "Description";
-            this.dgrvMods_Description.Name = "dgrvMods_Description";
-            this.dgrvMods_Description.ReadOnly = true;
-            // 
-            // bsrcModDetails
-            // 
-            this.bsrcModDetails.DataSource = typeof(RimworldModOrginiser.DataObjects.ModDetails);
             // 
             // toolModGrid
             // 
@@ -183,10 +151,10 @@
             // panelFooter
             // 
             this.panelFooter.Controls.Add(this.bttnSaveAndRun);
-            this.panelFooter.Controls.Add(this.lblProfile);
             this.panelFooter.Controls.Add(this.lblProfileLabel);
             this.panelFooter.Controls.Add(this.bttnLoad);
             this.panelFooter.Controls.Add(this.bttnSaveConfig);
+            this.panelFooter.Controls.Add(this.lblProfile);
             this.panelFooter.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelFooter.Location = new System.Drawing.Point(0, 421);
             this.panelFooter.Name = "panelFooter";
@@ -270,6 +238,38 @@
             this.txbxModDetails.Size = new System.Drawing.Size(209, 396);
             this.txbxModDetails.TabIndex = 0;
             // 
+            // dgrvMods_Name
+            // 
+            this.dgrvMods_Name.DataPropertyName = "Name";
+            this.dgrvMods_Name.HeaderText = "Name";
+            this.dgrvMods_Name.Name = "dgrvMods_Name";
+            this.dgrvMods_Name.ReadOnly = true;
+            // 
+            // dgrvMods_Author
+            // 
+            this.dgrvMods_Author.DataPropertyName = "Author";
+            this.dgrvMods_Author.HeaderText = "Author";
+            this.dgrvMods_Author.Name = "dgrvMods_Author";
+            this.dgrvMods_Author.ReadOnly = true;
+            // 
+            // dgrvMods_Url
+            // 
+            this.dgrvMods_Url.DataPropertyName = "Url";
+            this.dgrvMods_Url.HeaderText = "Url";
+            this.dgrvMods_Url.Name = "dgrvMods_Url";
+            this.dgrvMods_Url.ReadOnly = true;
+            // 
+            // dgrvMods_Description
+            // 
+            this.dgrvMods_Description.DataPropertyName = "Description";
+            this.dgrvMods_Description.HeaderText = "Description";
+            this.dgrvMods_Description.Name = "dgrvMods_Description";
+            this.dgrvMods_Description.ReadOnly = true;
+            // 
+            // bsrcModDetails
+            // 
+            this.bsrcModDetails.DataSource = typeof(RimworldModOrginiser.DataObjects.ModDetails);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -282,7 +282,6 @@
             this.Name = "frmMain";
             this.Text = "Rimworld Mod Orginiser";
             ((System.ComponentModel.ISupportInitialize)(this.dgrvMods)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsrcModDetails)).EndInit();
             this.toolModGrid.ResumeLayout(false);
             this.toolModGrid.PerformLayout();
             this.panelFooter.ResumeLayout(false);
@@ -292,6 +291,7 @@
             this.splitModGridAndDetails.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitModGridAndDetails)).EndInit();
             this.splitModGridAndDetails.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.bsrcModDetails)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
