@@ -28,3 +28,9 @@ Some types of issues that are chaecked are Core mod not enabled, core mod not fi
 Checking for dependencies is done based on an aditional .xml file and so may not be avalable for every mod without out the modder including that file.
 
 Part of the reasong for including this functionality is as a demonstration on what could be done with the hope that somthing similar could be included in the base game or a more integrated mod / program.
+
+
+# ChangeLog:
+
+01.00.00
+Initial Release
