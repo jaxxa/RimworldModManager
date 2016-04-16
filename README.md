@@ -1,4 +1,4 @@
-# RimworldModOrginiser
+# RimworldModManager
 
 This is still a work in progress and does not currently work correctly.
 
@@ -8,7 +8,7 @@ Keep an eye out for this on the official forums in the Tools section.
 
 Note that this program only works on windows. Tested on 7 and 10.
 
-1. Open the program "RimworldModOrginiser.exe"
+1. Open the program "RimworldModManager.exe"
 
 2. Press Load to Load a Profile, these profiles record your Rimworld game lcoation and config location.
 

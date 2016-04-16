@@ -1,4 +1,4 @@
-﻿namespace RimworldModOrginiser
+﻿namespace RimworldModManager
 {
     partial class frmSettings
     {
@@ -66,7 +66,7 @@
             // 
             // bsrcSettings
             // 
-            this.bsrcSettings.DataSource = typeof(RimworldModOrginiser.ProgramSettings.Profile);
+            this.bsrcSettings.DataSource = typeof(RimworldModManager.ProgramSettings.Profile);
             // 
             // bttnCancel
             // 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
 
-namespace RimworldModOrginiser.ProgramSettings
+namespace RimworldModManager.ProgramSettings
 {
     public class SettingsManager
     {
@@ -47,7 +47,7 @@ namespace RimworldModOrginiser.ProgramSettings
                 XmlDocument _XmlSettingsDocument = new XmlDocument();
                 _XmlSettingsDocument.Load(@"Settings.xml");
 
-                XmlNode _XmlRmoProfiles = _XmlSettingsDocument.SelectSingleNode(@"RimworldModOrginiser/RMOProfiles");
+                XmlNode _XmlRmoProfiles = _XmlSettingsDocument.SelectSingleNode(@"RimworldModManager/RMOProfiles");
 
                 foreach (XmlNode _XmlProfile in _XmlRmoProfiles.ChildNodes)
                 {
@@ -71,7 +71,7 @@ namespace RimworldModOrginiser.ProgramSettings
 
             XDocument _XmlSettings = new XDocument();
 
-            XElement _XmlRimworldModOrginiser = new XElement("RimworldModOrginiser");
+            XElement _XmlRimworldModManager = new XElement("RimworldModManager");
             XElement _XmlRMOProfiles = new XElement("RMOProfiles");
 
             foreach (Profile _CurrentProfile in this.Profiles)
@@ -83,8 +83,8 @@ namespace RimworldModOrginiser.ProgramSettings
                 _XmlRMOProfiles.Add(_XmlProfile);
             }
 
-            _XmlRimworldModOrginiser.Add(_XmlRMOProfiles);
-            _XmlSettings.Add(_XmlRimworldModOrginiser);
+            _XmlRimworldModManager.Add(_XmlRMOProfiles);
+            _XmlSettings.Add(_XmlRimworldModManager);
 
             _XmlSettings.Save(@"Settings.xml");
 

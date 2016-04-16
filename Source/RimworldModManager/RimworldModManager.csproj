@@ -7,8 +7,8 @@
     <ProjectGuid>{000BEF1D-FA96-4033-A5F7-CFC4EC63B328}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>RimworldModOrginiser</RootNamespace>
-    <AssemblyName>RimworldModOrginiser</AssemblyName>
+    <RootNamespace>RimworldModManager</RootNamespace>
+    <AssemblyName>RimworldModManager</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -88,6 +88,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\DataSources\RimworldModOrginiser.DataObjects.ModDetails.datasource" />
     <None Include="Properties\DataSources\RimworldModOrginiser.Properties.Settings.datasource" />

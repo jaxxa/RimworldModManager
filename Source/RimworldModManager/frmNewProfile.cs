@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace RimworldModOrginiser
+namespace RimworldModManager
 {
     public partial class frmNewProfile : Form
     {
@@ -29,14 +29,14 @@ namespace RimworldModOrginiser
             this.Close();
         }
 
-        public static RimworldModOrginiser.ProgramSettings.Profile GetNewProfile()
+        public static RimworldModManager.ProgramSettings.Profile GetNewProfile()
         {
             frmNewProfile _frmNewProfile = new frmNewProfile();
             DialogResult _result = _frmNewProfile.ShowDialog();
 
             if (_result == DialogResult.OK)
             {
-                RimworldModOrginiser.ProgramSettings.Profile _NewProfile = new ProgramSettings.Profile();
+                RimworldModManager.ProgramSettings.Profile _NewProfile = new ProgramSettings.Profile();
 
                 _NewProfile.RimworldFolder = _frmNewProfile.txbxRimworldFolder.Text;
                 _NewProfile.ConfigFolder = _frmNewProfile.txbxConfigFolder.Text;

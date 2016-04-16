@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<RimworldModOrginiser>
+<RimworldModManager>
   <RMOProfiles>
     <Profile>
       <RimworldFolder>C:\Games\RimWorldAlpha12dWin\RimWorld914Win</RimworldFolder>
@@ -14,4 +14,4 @@
       <ConfigFolder>C:\Games\RimWorld1135Win\SaveData</ConfigFolder>
     </Profile>
   </RMOProfiles>
-</RimworldModOrginiser>
+</RimworldModManager>

@@ -8,7 +8,7 @@ using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Linq;
 
-namespace RimworldModOrginiser.DataObjects
+namespace RimworldModManager.DataObjects
 {
     class ModManager
     {
@@ -56,7 +56,7 @@ namespace RimworldModOrginiser.DataObjects
 
             foreach (System.IO.DirectoryInfo _ModDirectoryInfo in _ModFolders)
             {
-                RimworldModOrginiser.DataObjects.ModDetails _CurrentMod = new RimworldModOrginiser.DataObjects.ModDetails();
+                RimworldModManager.DataObjects.ModDetails _CurrentMod = new RimworldModManager.DataObjects.ModDetails();
                 _CurrentMod.load(_ModDirectoryInfo.FullName);
 
                 this.m_ModList.Add(_CurrentMod);

@@ -1,4 +1,4 @@
-﻿namespace RimworldModOrginiser
+﻿namespace RimworldModManager
 {
     partial class frmMain
     {
@@ -268,7 +268,7 @@
             // 
             // bsrcModDetails
             // 
-            this.bsrcModDetails.DataSource = typeof(RimworldModOrginiser.DataObjects.ModDetails);
+            this.bsrcModDetails.DataSource = typeof(RimworldModManager.DataObjects.ModDetails);
             // 
             // frmMain
             // 

@@ -1,4 +1,4 @@
-﻿namespace RimworldModOrginiser
+﻿namespace RimworldModManager
 {
     partial class frmNewProfile
     {

@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace RimworldModOrginiser
+namespace RimworldModManager
 {
     public partial class frmSettings : Form
     {
-        private RimworldModOrginiser.ProgramSettings.SettingsManager m_SettingManager;
+        private RimworldModManager.ProgramSettings.SettingsManager m_SettingManager;
 
         public frmSettings()
         {

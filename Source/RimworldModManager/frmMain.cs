@@ -1,5 +1,5 @@
-﻿using RimworldModOrginiser.DataObjects;
-using RimworldModOrginiser.ProgramSettings;
+﻿using RimworldModManager.DataObjects;
+using RimworldModManager.ProgramSettings;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace RimworldModOrginiser
+namespace RimworldModManager
 {
     public partial class frmMain : Form
     {
@@ -41,7 +41,7 @@ namespace RimworldModOrginiser
             if (this.m_SettingsManager == null) { return; }
 
 
-            this.m_Manager = new RimworldModOrginiser.DataObjects.ModManager();
+            this.m_Manager = new RimworldModManager.DataObjects.ModManager();
 
             this.m_Manager.LoadModList(this.m_SettingsManager.RimworldFolder);
 

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RimworldModOrginiser.ProgramSettings
+namespace RimworldModManager.ProgramSettings
 {
     public class Profile
     {
