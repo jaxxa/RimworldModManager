@@ -9,23 +9,36 @@ namespace RimworldModManager.DataObjects
 {
     class ModDetails
     {
-        
+
         #region Properties
 
         //Data storage properties--------------------------
 
-        public string Name
+        public string XMLName
         {
             get
             {
-                return this.m_Name;
+                return this.m_XMLName;
             }
             set
             {
-                this.m_Name = value;
+                this.m_XMLName = value;
             }
         }
-        string m_Name;
+        string m_XMLName;
+
+        public string DiskName
+        {
+            get
+            {
+                return this.m_DiskName;
+            }
+            set
+            {
+                this.m_DiskName = value;
+            }
+        }
+        string m_DiskName;
 
         public string Author
         {
@@ -166,7 +179,7 @@ namespace RimworldModManager.DataObjects
         {
             get
             {
-                return string.Equals(this.Name, "Core");
+                return string.Equals(this.DiskName, "Core");
             }
         }
 
@@ -184,7 +197,8 @@ namespace RimworldModManager.DataObjects
             {
                 StringBuilder _Details = new StringBuilder();
 
-                _Details.AppendLine("Name:" + this.Name);
+                _Details.AppendLine("XMLName:" + this.XMLName);
+                _Details.AppendLine("DiskName:" + this.DiskName);
                 _Details.AppendLine("Sequence:" + this.SequenceDescription);
                 _Details.AppendLine("Author:" + this.Author);
                 _Details.AppendLine("Description:" + this.Description);
@@ -228,22 +242,37 @@ namespace RimworldModManager.DataObjects
         
         public void load(string modFolder)
         {
+            this.DiskName = System.IO.Path.GetFileNameWithoutExtension(modFolder);
+
             if (System.IO.File.Exists(modFolder + @"\About\About.xml"))
             {
+
                 XmlDocument _AboutFile = new XmlDocument();
                 _AboutFile.Load(modFolder + @"\About\About.xml");
 
                 var _XmlName = _AboutFile.DocumentElement.SelectSingleNode("/ModMetaData/name");
-                this.m_Name = _XmlName.InnerText;
+                if (_XmlName != null)
+                {
+                    this.m_XMLName = _XmlName.InnerText;
+                }
 
                 var _XmlAuthor = _AboutFile.DocumentElement.SelectSingleNode("/ModMetaData/author");
-                this.m_Author = _XmlAuthor.InnerText;
+                if (_XmlAuthor != null)
+                {
+                    this.m_Author = _XmlAuthor.InnerText;
+                }
 
                 var _XmlUrl = _AboutFile.DocumentElement.SelectSingleNode("/ModMetaData/url");
-                this.m_Url = _XmlUrl.InnerText;
+                if (_XmlUrl != null)
+                {
+                    this.m_Url = _XmlUrl.InnerText;
+                }
 
                 var _XmlDescription = _AboutFile.DocumentElement.SelectSingleNode("/ModMetaData/description");
-                this.m_Description = _XmlDescription.InnerText;
+                if (_XmlDescription != null)
+                {
+                    this.m_Description = _XmlDescription.InnerText;
+                }
 
                 this.m_ExistsInAbout = true;
             }
@@ -275,7 +304,7 @@ namespace RimworldModManager.DataObjects
 
         public override string ToString()
         {
-            return "ModDetails: " + this.Sequence + " : " + this.Name;
+            return "ModDetails: " + this.Sequence + " : " + this.DiskName;
             //return base.ToString();
         }
         
@@ -307,7 +336,7 @@ namespace RimworldModManager.DataObjects
             
             foreach (string _CurrentDependencyName in this.Dependencies)
             {
-                ModDetails _CurrentDependency = parentManager.GetModByName(_CurrentDependencyName);
+                ModDetails _CurrentDependency = parentManager.GetModByDiskName(_CurrentDependencyName);
 
                 if (_CurrentDependency == null)
                 {

@@ -107,7 +107,7 @@ namespace RimworldModManager.DataObjects
             {
 
                 _ActiveMods.Add(_XmlactiveMod.InnerText);
-                ModDetails _currentMod = this.GetModByName(_XmlactiveMod.InnerText);
+                ModDetails _currentMod = this.GetModByDiskName(_XmlactiveMod.InnerText);
 
                 if (_currentMod != null)
                 {
@@ -119,7 +119,7 @@ namespace RimworldModManager.DataObjects
 
                     ModDetails _NewMod = new ModDetails();
 
-                    _NewMod.Name = _XmlactiveMod.InnerText;
+                    _NewMod.XMLName = _XmlactiveMod.InnerText;
                     _NewMod.configValues(i);
 
                     this.ModList.Add(_NewMod);
@@ -130,9 +130,9 @@ namespace RimworldModManager.DataObjects
             }
         }
 
-        public ModDetails GetModByName(string requiredModName)
+        public ModDetails GetModByDiskName(string requiredModName)
         {
-            return this.ModList.FirstOrDefault<ModDetails>(m => m.Name == requiredModName);
+            return this.ModList.FirstOrDefault<ModDetails>(m => m.DiskName == requiredModName);
         }
 
         public ModDetails GetModBySequence(int requiredSequence)
@@ -257,7 +257,7 @@ namespace RimworldModManager.DataObjects
             {
                 if (_CurrentMod.Sequence != ModManager.INACTIVE_SEQUENCE)
                 {
-                    _activeMods.Add(new XElement( "li", _CurrentMod.Name));
+                    _activeMods.Add(new XElement( "li", _CurrentMod.DiskName));
                 }
             }
             

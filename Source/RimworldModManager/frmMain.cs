@@ -231,9 +231,8 @@ namespace RimworldModManager
 
             if (_FilePath != null)
             {
-
-                System.Diagnostics.Process.Start(_FilePath,
-                   "\" -savedatafolder=" + this.m_SettingsManager.ConfigFolder + "\"");
+                string _Paramiter = " -savedatafolder=\"" + this.m_SettingsManager.ConfigFolder + "\"";
+                System.Diagnostics.Process.Start(_FilePath, _Paramiter);
             }
         }
 
