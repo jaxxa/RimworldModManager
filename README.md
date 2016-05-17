@@ -38,3 +38,4 @@ Part of the reasong for including this functionality is as a demonstration on wh
 01.00.01
  * Support for different Folder names from XML Names.
  * Support for missing XML Tags in About.xml
+ * Removed Description and URL columns.

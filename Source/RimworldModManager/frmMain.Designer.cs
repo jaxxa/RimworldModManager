@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.dgrvMods = new System.Windows.Forms.DataGridView();
-            this.bsrcModDetails = new System.Windows.Forms.BindingSource(this.components);
             this.toolModGrid = new System.Windows.Forms.ToolStrip();
             this.toolModGrid_MoveUp = new System.Windows.Forms.ToolStripButton();
             this.toolModGrid_MoveDown = new System.Windows.Forms.ToolStripButton();
@@ -46,21 +45,20 @@
             this.splitModGridAndDetails = new System.Windows.Forms.SplitContainer();
             this.txbxModDetails = new System.Windows.Forms.TextBox();
             this.directoryEntry1 = new System.DirectoryServices.DirectoryEntry();
+            this.bsrcModDetails = new System.Windows.Forms.BindingSource(this.components);
             this.dgrvMods_SequenceDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgrvMods_DiskName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgrvMods_XMLName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgrvMods_Issues = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgrvMods_Author = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgrvMods_Url = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgrvMods_Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgrvMods)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsrcModDetails)).BeginInit();
             this.toolModGrid.SuspendLayout();
             this.panelFooter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitModGridAndDetails)).BeginInit();
             this.splitModGridAndDetails.Panel1.SuspendLayout();
             this.splitModGridAndDetails.Panel2.SuspendLayout();
             this.splitModGridAndDetails.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bsrcModDetails)).BeginInit();
             this.SuspendLayout();
             // 
             // dgrvMods
@@ -75,9 +73,7 @@
             this.dgrvMods_DiskName,
             this.dgrvMods_XMLName,
             this.dgrvMods_Issues,
-            this.dgrvMods_Author,
-            this.dgrvMods_Url,
-            this.dgrvMods_Description});
+            this.dgrvMods_Author});
             this.dgrvMods.DataSource = this.bsrcModDetails;
             this.dgrvMods.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgrvMods.Location = new System.Drawing.Point(0, 0);
@@ -87,10 +83,6 @@
             this.dgrvMods.TabIndex = 0;
             this.dgrvMods.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgrvMods_CellDoubleClick);
             this.dgrvMods.SelectionChanged += new System.EventHandler(this.dgrvMods_SelectionChanged);
-            // 
-            // bsrcModDetails
-            // 
-            this.bsrcModDetails.DataSource = typeof(RimworldModManager.DataObjects.ModDetails);
             // 
             // toolModGrid
             // 
@@ -230,6 +222,10 @@
             this.txbxModDetails.Size = new System.Drawing.Size(209, 396);
             this.txbxModDetails.TabIndex = 0;
             // 
+            // bsrcModDetails
+            // 
+            this.bsrcModDetails.DataSource = typeof(RimworldModManager.DataObjects.ModDetails);
+            // 
             // dgrvMods_SequenceDescription
             // 
             this.dgrvMods_SequenceDescription.DataPropertyName = "SequenceDescription";
@@ -265,20 +261,6 @@
             this.dgrvMods_Author.Name = "dgrvMods_Author";
             this.dgrvMods_Author.ReadOnly = true;
             // 
-            // dgrvMods_Url
-            // 
-            this.dgrvMods_Url.DataPropertyName = "Url";
-            this.dgrvMods_Url.HeaderText = "Url";
-            this.dgrvMods_Url.Name = "dgrvMods_Url";
-            this.dgrvMods_Url.ReadOnly = true;
-            // 
-            // dgrvMods_Description
-            // 
-            this.dgrvMods_Description.DataPropertyName = "Description";
-            this.dgrvMods_Description.HeaderText = "Description";
-            this.dgrvMods_Description.Name = "dgrvMods_Description";
-            this.dgrvMods_Description.ReadOnly = true;
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -291,7 +273,6 @@
             this.Name = "frmMain";
             this.Text = "Rimworld Mod Orginiser";
             ((System.ComponentModel.ISupportInitialize)(this.dgrvMods)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsrcModDetails)).EndInit();
             this.toolModGrid.ResumeLayout(false);
             this.toolModGrid.PerformLayout();
             this.panelFooter.ResumeLayout(false);
@@ -301,6 +282,7 @@
             this.splitModGridAndDetails.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitModGridAndDetails)).EndInit();
             this.splitModGridAndDetails.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.bsrcModDetails)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -320,7 +302,6 @@
         private System.Windows.Forms.ToolStripButton toolModGrid_Toggle;
         private System.Windows.Forms.SplitContainer splitModGridAndDetails;
         private System.Windows.Forms.TextBox txbxModDetails;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgrvMods_Name;
         private System.DirectoryServices.DirectoryEntry directoryEntry1;
         private System.Windows.Forms.Label lblProfileLabel;
         private System.Windows.Forms.Label lblProfile;
@@ -330,8 +311,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgrvMods_XMLName;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgrvMods_Issues;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgrvMods_Author;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgrvMods_Url;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgrvMods_Description;
     }
 }
 

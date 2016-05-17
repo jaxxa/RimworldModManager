@@ -80,7 +80,7 @@ namespace RimworldModManager.DataObjects
         string m_Description;
         
         //Convert this to its own class eventually instead of strings?
-        public List<String> Dependencies
+        public List<Dependency> Dependencies
         {
             get
             {
@@ -91,7 +91,7 @@ namespace RimworldModManager.DataObjects
                 this.m_Dependencies = value;
             }
         }
-        List<String> m_Dependencies = new List<string>();
+        List<Dependency> m_Dependencies = new List<Dependency>();
 
         public int Sequence
         {
@@ -202,13 +202,13 @@ namespace RimworldModManager.DataObjects
                 _Details.AppendLine("Sequence:" + this.SequenceDescription);
                 _Details.AppendLine("Author:" + this.Author);
                 _Details.AppendLine("Description:" + this.Description);
-                _Details.AppendLine("URL:" + this.Url);
+                _Details.AppendLine("URL:" + Environment.NewLine + this.Url);
                 _Details.AppendLine("");
                 _Details.AppendLine("Dependencies:");
 
-                foreach (string _Dependencie in this.Dependencies)
+                foreach (Dependency _Dependencie in this.Dependencies)
                 {
-                    _Details.AppendLine(_Dependencie);
+                    _Details.AppendLine(_Dependencie.m_DiskNme);
                 }
 
                 if (this.Issues != null)
@@ -242,7 +242,7 @@ namespace RimworldModManager.DataObjects
         
         public void load(string modFolder)
         {
-            this.DiskName = System.IO.Path.GetFileNameWithoutExtension(modFolder);
+            this.DiskName = System.IO.Path.GetFileName(modFolder);
 
             if (System.IO.File.Exists(modFolder + @"\About\About.xml"))
             {
@@ -288,7 +288,9 @@ namespace RimworldModManager.DataObjects
 
                 foreach (XmlNode _CurrentNode in _XmlDependencies.ChildNodes)
                 {
-                    this.m_Dependencies.Add(_CurrentNode.InnerText);
+                    //this.m_Dependencies.Add(_CurrentNode.InnerText);
+                    this.Dependencies.Add(Dependency.CreateDependency(_CurrentNode));
+
                 }
                 this.ExistsInDependencies = true;
             }
@@ -334,21 +336,21 @@ namespace RimworldModManager.DataObjects
                 }
             }
             
-            foreach (string _CurrentDependencyName in this.Dependencies)
+            foreach (Dependency _CurrentDependency in this.Dependencies)
             {
-                ModDetails _CurrentDependency = parentManager.GetModByDiskName(_CurrentDependencyName);
+                ModDetails _CurrentDependencyMod = parentManager.GetModByDiskName(_CurrentDependency.m_DiskNme);
 
-                if (_CurrentDependency == null)
+                if (_CurrentDependencyMod == null)
                 {
-                    _Problems.AppendLine("Missing Dependencie: " + _CurrentDependencyName);
+                    _Problems.AppendLine("Missing Dependencie: " + _CurrentDependency.m_DiskNme);
                 }
-                else if (!_CurrentDependency.IsActive) 
+                else if (!_CurrentDependencyMod.IsActive) 
                 {
-                    _Problems.AppendLine("Inactive Dependencie: " + _CurrentDependencyName);
+                    _Problems.AppendLine("Inactive Dependencie: " + _CurrentDependency.m_DiskNme);
                 }
-                else if(_CurrentDependency.Sequence > this.Sequence)
+                else if(_CurrentDependencyMod.Sequence > this.Sequence)
                 {
-                    _Problems.AppendLine("Dependencie later in load order: " + _CurrentDependencyName);
+                    _Problems.AppendLine("Dependencie later in load order: " + _CurrentDependency.m_DiskNme);
                 }
             }
             

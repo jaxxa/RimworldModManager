@@ -2,6 +2,10 @@
 <RimworldModManager>
   <RMOProfiles>
     <Profile>
+      <RimworldFolder>D:\~Shared\RimWorld1135Win</RimworldFolder>
+      <ConfigFolder>D:\~Shared\RimWorld1135Win\SaveData2</ConfigFolder>
+    </Profile>
+    <Profile>
       <RimworldFolder>C:\Games\RimWorldAlpha12dWin\RimWorld914Win</RimworldFolder>
       <ConfigFolder>C:\Games\RimWorld1123WinDev\SaveData</ConfigFolder>
     </Profile>
