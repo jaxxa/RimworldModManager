@@ -12,7 +12,7 @@ namespace RimworldModManager
 {
     public partial class frmSettings : Form
     {
-        private RimworldModManager.ProgramSettings.SettingsManager m_SettingManager;
+        private RimworldModManager.ProgramSettings.ProfileManager m_SettingManager;
 
         public frmSettings()
         {
@@ -22,7 +22,7 @@ namespace RimworldModManager
         private void frmSettings_Load(object sender, EventArgs e)
         {
 
-            this.m_SettingManager = new ProgramSettings.SettingsManager();
+            this.m_SettingManager = new ProgramSettings.ProfileManager();
 
             this.m_SettingManager.Load();
 
@@ -87,7 +87,7 @@ namespace RimworldModManager
         {
         }
 
-        public static ProgramSettings.SettingsManager GetSettings()
+        public static ProgramSettings.ProfileManager GetSettings()
         {
             var _frmSettings = new frmSettings();
 

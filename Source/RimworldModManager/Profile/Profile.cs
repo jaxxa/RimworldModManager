@@ -35,9 +35,22 @@ namespace RimworldModManager.ProgramSettings
         }
         string m_ConfigFolder;
 
+        public string WorkshopFolder
+        {
+            get
+            {
+                return this.m_WorkshopFolder;
+            }
+            set
+            {
+                this.m_WorkshopFolder = value;
+            }
+        }
+        string m_WorkshopFolder;
+
         public override string ToString()
         {
-            return "RimworldFolder: " + this.RimworldFolder + Environment.NewLine + " ConfigFolder: " + this.ConfigFolder;
+            return "RimworldFolder: " + this.RimworldFolder + Environment.NewLine + " ConfigFolder: " + this.ConfigFolder + Environment.NewLine + " WorkshopFolder: " + this.WorkshopFolder;
             //return base.ToString(); 
         }
 

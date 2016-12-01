@@ -24,7 +24,7 @@ namespace RimworldModManager
 
         ModManager m_Manager;
 
-        SettingsManager m_SettingsManager;
+        ProfileManager m_ProfileManager;
 
         private List<DataObjects.ModDetails> m_SelctedMods = new List<DataObjects.ModDetails>();
 
@@ -37,27 +37,27 @@ namespace RimworldModManager
             //this.m_SettingsManager = new SettingsManager();
             //this.m_SettingsManager.Load();
 
-            this.m_SettingsManager = frmSettings.GetSettings();
-            if (this.m_SettingsManager == null) { return; }
+            this.m_ProfileManager = frmSettings.GetSettings();
+            if (this.m_ProfileManager == null) { return; }
 
 
             this.m_Manager = new RimworldModManager.DataObjects.ModManager();
 
-            this.m_Manager.LoadModList(this.m_SettingsManager.RimworldFolder);
+            this.m_Manager.LoadModList(this.m_ProfileManager.ActiveProfile_RimworldFolder);
 
-            this.m_Manager.LoadModConfig(this.m_SettingsManager.ConfigFolder);
+            this.m_Manager.LoadModConfig(this.m_ProfileManager.ActiveProfile_ConfigFolder);
 
             this.m_Manager.CheckIssues();
 
             this.UpdateOrder();
 
-            if (this.m_SettingsManager.ActiveProfile == null)
+            if (this.m_ProfileManager.ActiveProfile == null)
             {
                 lblProfile.Text = "No Profile Loaded";
             }
             else
             {
-                lblProfile.Text = this.m_SettingsManager.ActiveProfile.ToString();
+                lblProfile.Text = this.m_ProfileManager.ActiveProfile.ToString();
             }
 
         }
@@ -219,19 +219,19 @@ namespace RimworldModManager
 
         private void bttnSaveConfig_Click(object sender, EventArgs e)
         {
-            this.m_Manager.SaveConfig(this.m_SettingsManager.ConfigFolder);
+            this.m_Manager.SaveConfig(this.m_ProfileManager.ActiveProfile_ConfigFolder);
         }
 
         private void bttnSaveAndRun_Click(object sender, EventArgs e)
         {
 
-            this.m_Manager.SaveConfig(this.m_SettingsManager.ConfigFolder);
+            this.m_Manager.SaveConfig(this.m_ProfileManager.ActiveProfile_ConfigFolder);
 
-            string _FilePath = this.FindExecutable(this.m_SettingsManager.RimworldFolder);
+            string _FilePath = this.FindExecutable(this.m_ProfileManager.ActiveProfile_RimworldFolder);
 
             if (_FilePath != null)
             {
-                string _Paramiter = " -savedatafolder=\"" + this.m_SettingsManager.ConfigFolder + "\"";
+                string _Paramiter = " -savedatafolder=\"" + this.m_ProfileManager.ActiveProfile_ConfigFolder + "\"";
                 System.Diagnostics.Process.Start(_FilePath, _Paramiter);
             }
         }
@@ -259,6 +259,91 @@ namespace RimworldModManager
             }
 
             return null;
+        }
+
+        private void bttnCancel_Click(object sender, EventArgs e)
+        {
+
+        }
+        
+        private void frmMain_Load(object sender, EventArgs e)
+        {
+
+            this.m_ProfileManager = new ProgramSettings.ProfileManager();
+
+            this.m_ProfileManager.Load();
+
+            this.bsrcSettings.DataSource = this.m_ProfileManager.Profiles;
+        }
+
+        private void bttnNew_Click(object sender, EventArgs e)
+        {
+            ProgramSettings.Profile _NewProfile = frmNewProfile.GetNewProfile();
+
+            if (_NewProfile != null)
+            {
+                this.m_ProfileManager.Profiles.Add(_NewProfile);
+            }
+
+
+            this.bsrcSettings.DataSource = null;
+            this.bsrcSettings.DataSource = this.m_ProfileManager.Profiles;
+            this.dgrvSettings.Refresh();
+
+            dgrvSettings.ClearSelection();
+
+            foreach (DataGridViewRow _CurrentRow in dgrvSettings.Rows)
+            {
+                ProgramSettings.Profile _CurrentRowItem = (ProgramSettings.Profile)_CurrentRow.DataBoundItem;
+
+                if (_NewProfile == _CurrentRowItem)
+                {
+                    _CurrentRow.Selected = true;
+                    dgrvSettings.CurrentCell = dgrvSettings.Rows[_CurrentRow.Cells[0].RowIndex].Cells[0];
+                }
+                else
+                {
+                    _CurrentRow.Selected = false;
+                }
+            }
+        }
+
+        private void bttnDelete_Click(object sender, EventArgs e)
+        {
+            // this.m_SettingManager.Profiles.Remove((ProgramSettings.Profile)this.bsrcSettings.Current);
+            this.bsrcSettings.Remove((ProgramSettings.Profile)this.bsrcSettings.Current);
+            this.dgrvSettings.Refresh();
+        }
+
+        private void bttnLoadProfile_Click(object sender, EventArgs e)
+        {
+            this.m_ProfileManager.ActiveProfile = (ProgramSettings.Profile)this.bsrcSettings.Current;
+            
+            this.m_Manager = new RimworldModManager.DataObjects.ModManager();
+
+            this.m_Manager.LoadModList(this.m_ProfileManager.ActiveProfile_RimworldFolder);
+
+            this.m_Manager.LoadModConfig(this.m_ProfileManager.ActiveProfile_ConfigFolder);
+
+            this.m_Manager.CheckIssues();
+
+            this.UpdateOrder();
+
+            if (this.m_ProfileManager.ActiveProfile == null)
+            {
+                lblProfile.Text = "No Profile Loaded";
+            }
+            else
+            {
+                lblProfile.Text = this.m_ProfileManager.ActiveProfile.ToString();
+            }
+
+
+        }
+
+        private void bttnSaveProfile_Click(object sender, EventArgs e)
+        {
+            this.m_ProfileManager.Save();
         }
     }
 }

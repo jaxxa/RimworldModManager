@@ -40,6 +40,7 @@ namespace RimworldModManager
 
                 _NewProfile.RimworldFolder = _frmNewProfile.txbxRimworldFolder.Text;
                 _NewProfile.ConfigFolder = _frmNewProfile.txbxConfigFolder.Text;
+                _NewProfile.WorkshopFolder = _frmNewProfile.txbxWorkshopFolder.Text;
 
                 return _NewProfile;
             }
@@ -69,6 +70,19 @@ namespace RimworldModManager
             if (_Result == DialogResult.OK)
             {
                 this.txbxConfigFolder.Text = _ChooseDialog.SelectedPath;
+            }
+        }
+
+        private void bttnChooseWorkshopFolder_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog _ChooseDialog = new FolderBrowserDialog();
+            _ChooseDialog.SelectedPath = this.txbxWorkshopFolder.Text;
+            _ChooseDialog.Description = "Please select the folder that contains the Workshop Mods";
+            DialogResult _Result = _ChooseDialog.ShowDialog();
+
+            if (_Result == DialogResult.OK)
+            {
+                this.txbxWorkshopFolder.Text = _ChooseDialog.SelectedPath;
             }
         }
 

@@ -60,8 +60,8 @@
     <Compile Include="frmNewProfile.Designer.cs">
       <DependentUpon>frmNewProfile.cs</DependentUpon>
     </Compile>
-    <Compile Include="Settings\Profile.cs" />
-    <Compile Include="Settings\SettingsManager.cs" />
+    <Compile Include="Profile\Profile.cs" />
+    <Compile Include="Profile\ProfileManager.cs" />
     <Compile Include="DataObjects\ModManager.cs" />
     <Compile Include="DataObjects\ModDetails.cs" />
     <Compile Include="frmMain.cs">
