@@ -30,18 +30,18 @@ namespace RimworldModManager.DataObjects
 
         private int m_BuildNumber = INACTIVE_SEQUENCE;
 
-        public void LoadModList(string rwFolder)
+        public void LoadModList(string rimworldFolder, string workshopFolder)
         {
             this.m_ModList.Clear();
 
             // Check that the Rimworld Folder exists
-            if (!System.IO.Directory.Exists(rwFolder))
+            if (!System.IO.Directory.Exists(rimworldFolder))
             {
-                MessageBox.Show("Rimworld Folder not Found" + rwFolder);
+                MessageBox.Show("Rimworld Folder not Found" + rimworldFolder);
                 return;
             }
 
-            string _RimworldModsFolder = rwFolder + @"\Mods";
+            string _RimworldModsFolder = rimworldFolder + @"\Mods";
             //Check mods folder exists
             if (!System.IO.Directory.Exists(_RimworldModsFolder))
             {
@@ -52,7 +52,17 @@ namespace RimworldModManager.DataObjects
             //Find all mods (folders in mods folder)
             System.IO.DirectoryInfo _RimworldModsFolderInfo = new System.IO.DirectoryInfo(_RimworldModsFolder);
 
-            System.IO.DirectoryInfo[] _ModFolders = _RimworldModsFolderInfo.GetDirectories();
+            List<System.IO.DirectoryInfo> _ModFolders = _RimworldModsFolderInfo.GetDirectories().ToList();
+
+
+            //Workshop
+            //Check mods folder exists
+            if (System.IO.Directory.Exists(workshopFolder))
+            {
+                System.IO.DirectoryInfo _WorkshopFolderInfo = new System.IO.DirectoryInfo(workshopFolder);
+
+                _ModFolders.AddRange(_WorkshopFolderInfo.GetDirectories().ToList());
+            }
 
             foreach (System.IO.DirectoryInfo _ModDirectoryInfo in _ModFolders)
             {

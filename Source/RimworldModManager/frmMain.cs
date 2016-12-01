@@ -31,7 +31,7 @@ namespace RimworldModManager
         #endregion Fields
 
         #region Gui Events
-
+        /*
         private void bttnLoad_Click(object sender, EventArgs e)
         {
             //this.m_SettingsManager = new SettingsManager();
@@ -43,7 +43,7 @@ namespace RimworldModManager
 
             this.m_Manager = new RimworldModManager.DataObjects.ModManager();
 
-            this.m_Manager.LoadModList(this.m_ProfileManager.ActiveProfile_RimworldFolder);
+            this.m_Manager.LoadModList(this.m_ProfileManager.ActiveProfile_RimworldFolder, this.m_ProfileManager.ActiveProfile_WorkshopFolder);
 
             this.m_Manager.LoadModConfig(this.m_ProfileManager.ActiveProfile_ConfigFolder);
 
@@ -61,7 +61,7 @@ namespace RimworldModManager
             }
 
         }
-
+        */
         private void toolModGrid_MoveUp_Click(object sender, EventArgs e)
         {
             this.SaveSelection();
@@ -321,7 +321,7 @@ namespace RimworldModManager
             
             this.m_Manager = new RimworldModManager.DataObjects.ModManager();
 
-            this.m_Manager.LoadModList(this.m_ProfileManager.ActiveProfile_RimworldFolder);
+            this.m_Manager.LoadModList(this.m_ProfileManager.ActiveProfile_RimworldFolder,this.m_ProfileManager.ActiveProfile_WorkshopFolder);
 
             this.m_Manager.LoadModConfig(this.m_ProfileManager.ActiveProfile_ConfigFolder);
 
