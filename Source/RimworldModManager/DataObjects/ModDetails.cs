@@ -92,20 +92,19 @@ namespace RimworldModManager.DataObjects
             }
         }
         string m_ModFilePath;
-
-        //Convert this to its own class eventually instead of strings?
-        public List<Dependency> Dependencies
-        {
-            get
-            {
-                return this.m_Dependencies;
-            }
-            set
-            {
-                this.m_Dependencies = value;
-            }
-        }
-        List<Dependency> m_Dependencies = new List<Dependency>();
+        
+        //public List<Dependency> Dependencies
+        //{
+        //    get
+        //    {
+        //        return this.m_Dependencies;
+        //    }
+        //    set
+        //    {
+        //        this.m_Dependencies = value;
+        //    }
+        //}
+        //List<Dependency> m_Dependencies = new List<Dependency>();
 
         public int Sequence
         {
@@ -218,12 +217,11 @@ namespace RimworldModManager.DataObjects
                 _Details.AppendLine("Description:" + this.Description);
                 _Details.AppendLine("URL:" + Environment.NewLine + this.Url);
                 _Details.AppendLine("");
-                _Details.AppendLine("Dependencies:");
-
-                foreach (Dependency _Dependencie in this.Dependencies)
-                {
-                    _Details.AppendLine(_Dependencie.m_DiskNme);
-                }
+                //_Details.AppendLine("Dependencies:");
+                //foreach (Dependency _Dependencie in this.Dependencies)
+                //{
+                //    _Details.AppendLine(_Dependencie.m_DiskNme);
+                //}
 
                 if (this.Issues != null)
                 {
@@ -294,22 +292,22 @@ namespace RimworldModManager.DataObjects
             }
 
 
-            if (System.IO.File.Exists(modFolder + @"\About\Dependencies.xml"))
-            {
+            //if (System.IO.File.Exists(modFolder + @"\About\Dependencies.xml"))
+            //{
 
-                XmlDocument _XmlDependenciesFile = new XmlDocument();
-                _XmlDependenciesFile.Load(modFolder + @"\About\Dependencies.xml");
+            //    XmlDocument _XmlDependenciesFile = new XmlDocument();
+            //    _XmlDependenciesFile.Load(modFolder + @"\About\Dependencies.xml");
 
-                var _XmlDependencies = _XmlDependenciesFile.DocumentElement.SelectSingleNode("/ModDependencieMetaData/Dependencies");
+            //    var _XmlDependencies = _XmlDependenciesFile.DocumentElement.SelectSingleNode("/ModDependencieMetaData/Dependencies");
 
-                foreach (XmlNode _CurrentNode in _XmlDependencies.ChildNodes)
-                {
-                    //this.m_Dependencies.Add(_CurrentNode.InnerText);
-                    this.Dependencies.Add(Dependency.CreateDependency(_CurrentNode));
+            //    foreach (XmlNode _CurrentNode in _XmlDependencies.ChildNodes)
+            //    {
+            //        //this.m_Dependencies.Add(_CurrentNode.InnerText);
+            //        this.Dependencies.Add(Dependency.CreateDependency(_CurrentNode));
 
-                }
-                this.ExistsInDependencies = true;
-            }
+            //    }
+            //    this.ExistsInDependencies = true;
+            //}
 
             this.m_ExistsInDisk = true;
         }
@@ -352,23 +350,23 @@ namespace RimworldModManager.DataObjects
                 }
             }
             
-            foreach (Dependency _CurrentDependency in this.Dependencies)
-            {
-                ModDetails _CurrentDependencyMod = parentManager.GetModByDiskName(_CurrentDependency.m_DiskNme);
+            //foreach (Dependency _CurrentDependency in this.Dependencies)
+            //{
+            //    ModDetails _CurrentDependencyMod = parentManager.GetModByDiskName(_CurrentDependency.m_DiskNme);
 
-                if (_CurrentDependencyMod == null)
-                {
-                    _Problems.AppendLine("Missing Dependencie: " + _CurrentDependency.m_DiskNme);
-                }
-                else if (!_CurrentDependencyMod.IsActive) 
-                {
-                    _Problems.AppendLine("Inactive Dependencie: " + _CurrentDependency.m_DiskNme);
-                }
-                else if(_CurrentDependencyMod.Sequence > this.Sequence)
-                {
-                    _Problems.AppendLine("Dependencie later in load order: " + _CurrentDependency.m_DiskNme);
-                }
-            }
+            //    if (_CurrentDependencyMod == null)
+            //    {
+            //        _Problems.AppendLine("Missing Dependencie: " + _CurrentDependency.m_DiskNme);
+            //    }
+            //    else if (!_CurrentDependencyMod.IsActive) 
+            //    {
+            //        _Problems.AppendLine("Inactive Dependencie: " + _CurrentDependency.m_DiskNme);
+            //    }
+            //    else if(_CurrentDependencyMod.Sequence > this.Sequence)
+            //    {
+            //        _Problems.AppendLine("Dependencie later in load order: " + _CurrentDependency.m_DiskNme);
+            //    }
+            //}
             
             if (_Problems.Length == 0)
             {

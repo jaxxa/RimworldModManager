@@ -350,7 +350,7 @@ namespace RimworldModManager
 
         #region Research
 
-      //  Research.ResearchManager m_ResearchManager;
+        //  Research.ResearchManager m_ResearchManager;
 
         private void bttnLoadResearch_Click(object sender, EventArgs e)
         {
@@ -365,7 +365,7 @@ namespace RimworldModManager
 
                     //Iterate finding Research
                     //List<string> xmlResearchFiles = _xmlFiles.Where(x => x.Contains("Research")).ToList();
-                    List<string> xmlResearchFiles = _xmlFiles.Where(x => this.FileContainsText(x, "ResearchProjectDef") ).ToList();
+                    List<string> xmlResearchFiles = _xmlFiles.Where(x => this.FileContainsText(x, "ResearchProjectDef")).ToList();
 
                     //Load Research Objects
 
@@ -406,8 +406,6 @@ namespace RimworldModManager
             if (String.IsNullOrWhiteSpace(_fileText)) { return false; }
             return _fileText.Contains(searchText);
 
-
-            return false;
         }
 
         //private List<string> FilterResearchFiles(List<string> xmlFiles)
