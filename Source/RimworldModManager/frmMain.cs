@@ -265,7 +265,7 @@ namespace RimworldModManager
         {
 
         }
-        
+
         private void frmMain_Load(object sender, EventArgs e)
         {
 
@@ -318,10 +318,10 @@ namespace RimworldModManager
         private void bttnLoadProfile_Click(object sender, EventArgs e)
         {
             this.m_ProfileManager.ActiveProfile = (ProgramSettings.Profile)this.bsrcSettings.Current;
-            
+
             this.m_Manager = new RimworldModManager.DataObjects.ModManager();
 
-            this.m_Manager.LoadModList(this.m_ProfileManager.ActiveProfile_RimworldFolder,this.m_ProfileManager.ActiveProfile_WorkshopFolder);
+            this.m_Manager.LoadModList(this.m_ProfileManager.ActiveProfile_RimworldFolder, this.m_ProfileManager.ActiveProfile_WorkshopFolder);
 
             this.m_Manager.LoadModConfig(this.m_ProfileManager.ActiveProfile_ConfigFolder);
 
@@ -345,5 +345,77 @@ namespace RimworldModManager
         {
             this.m_ProfileManager.Save();
         }
+
+
+
+        #region Research
+
+      //  Research.ResearchManager m_ResearchManager;
+
+        private void bttnLoadResearch_Click(object sender, EventArgs e)
+        {
+            //
+
+            foreach (ModDetails _CurrentMod in this.m_Manager.ModList)
+            {
+                if (_CurrentMod.IsActive)
+                {
+                    //Find all .xml files
+                    List<string> _xmlFiles = this.GetAllXmlFiles(_CurrentMod.ModFilePath);
+
+                    //Iterate finding Research
+                    //List<string> xmlResearchFiles = _xmlFiles.Where(x => x.Contains("Research")).ToList();
+                    List<string> xmlResearchFiles = _xmlFiles.Where(x => this.FileContainsText(x, "ResearchProjectDef") ).ToList();
+
+                    //Load Research Objects
+
+
+                }
+            }
+
+        }
+
+        private List<string> GetAllXmlFiles(string modPath)
+        {
+            List<string> _XmlFiles = new List<string>();
+
+            //Search for Files
+            string[] _Files = System.IO.Directory.GetFiles(modPath);
+            foreach (string _File in _Files)
+            {
+                if (String.Equals(".xml", System.IO.Path.GetExtension(_File)))
+                {
+                    _XmlFiles.Add(_File);
+                }
+            }
+
+            //Search SubFolders
+            string[] _Folders = System.IO.Directory.GetDirectories(modPath);
+            foreach (string _Folder in _Folders)
+            {
+                _XmlFiles.AddRange(this.GetAllXmlFiles(_Folder));
+            }
+
+            //Return
+            return _XmlFiles;
+        }
+
+        private bool FileContainsText(string filePath, string searchText)
+        {
+            String _fileText = System.IO.File.ReadAllText(filePath);
+            if (String.IsNullOrWhiteSpace(_fileText)) { return false; }
+            return _fileText.Contains(searchText);
+
+
+            return false;
+        }
+
+        //private List<string> FilterResearchFiles(List<string> xmlFiles)
+        //{
+
+        //}
+
+        #endregion
+
     }
 }

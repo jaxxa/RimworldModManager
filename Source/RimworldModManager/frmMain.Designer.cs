@@ -35,6 +35,8 @@
             this.dgrvMods_DiskName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgrvMods_XMLName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgrvMods_Issues = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgrvMods_Author = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bsrcModDetails = new System.Windows.Forms.BindingSource(this.components);
             this.toolModGrid = new System.Windows.Forms.ToolStrip();
             this.toolModGrid_MoveUp = new System.Windows.Forms.ToolStripButton();
             this.toolModGrid_MoveDown = new System.Windows.Forms.ToolStripButton();
@@ -51,20 +53,21 @@
             this.tabcMain = new System.Windows.Forms.TabControl();
             this.tabcMain_ProfileSelection = new System.Windows.Forms.TabPage();
             this.panlProfileSelectionFooter = new System.Windows.Forms.Panel();
+            this.bttnSaveProfile = new System.Windows.Forms.Button();
             this.bttnLoadProfile = new System.Windows.Forms.Button();
             this.bttnNew = new System.Windows.Forms.Button();
             this.bttnDelete = new System.Windows.Forms.Button();
             this.dgrvSettings = new System.Windows.Forms.DataGridView();
-            this.WorkshopFolder = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tabcMain_ModManager = new System.Windows.Forms.TabPage();
-            this.panl_MainFooter = new System.Windows.Forms.Panel();
-            this.bttnSaveProfile = new System.Windows.Forms.Button();
             this.rimworldFolderDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ConfigFolderDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.WorkshopFolder = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bsrcSettings = new System.Windows.Forms.BindingSource(this.components);
-            this.dgrvMods_Author = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bsrcModDetails = new System.Windows.Forms.BindingSource(this.components);
+            this.tabcMain_ModManager = new System.Windows.Forms.TabPage();
+            this.panl_MainFooter = new System.Windows.Forms.Panel();
+            this.tabcMain_ResearchManager = new System.Windows.Forms.TabPage();
+            this.bttnLoadResearch = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgrvMods)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsrcModDetails)).BeginInit();
             this.toolModGrid.SuspendLayout();
             this.panelFooter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitModGridAndDetails)).BeginInit();
@@ -75,10 +78,10 @@
             this.tabcMain_ProfileSelection.SuspendLayout();
             this.panlProfileSelectionFooter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgrvSettings)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsrcSettings)).BeginInit();
             this.tabcMain_ModManager.SuspendLayout();
             this.panl_MainFooter.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bsrcSettings)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsrcModDetails)).BeginInit();
+            this.tabcMain_ResearchManager.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgrvMods
@@ -131,6 +134,17 @@
             this.dgrvMods_Issues.HeaderText = "Issues";
             this.dgrvMods_Issues.Name = "dgrvMods_Issues";
             this.dgrvMods_Issues.ReadOnly = true;
+            // 
+            // dgrvMods_Author
+            // 
+            this.dgrvMods_Author.DataPropertyName = "Author";
+            this.dgrvMods_Author.HeaderText = "Author";
+            this.dgrvMods_Author.Name = "dgrvMods_Author";
+            this.dgrvMods_Author.ReadOnly = true;
+            // 
+            // bsrcModDetails
+            // 
+            this.bsrcModDetails.DataSource = typeof(RimworldModManager.DataObjects.ModDetails);
             // 
             // toolModGrid
             // 
@@ -262,6 +276,7 @@
             // 
             this.tabcMain.Controls.Add(this.tabcMain_ProfileSelection);
             this.tabcMain.Controls.Add(this.tabcMain_ModManager);
+            this.tabcMain.Controls.Add(this.tabcMain_ResearchManager);
             this.tabcMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabcMain.Location = new System.Drawing.Point(0, 0);
             this.tabcMain.Name = "tabcMain";
@@ -293,6 +308,16 @@
             this.panlProfileSelectionFooter.Name = "panlProfileSelectionFooter";
             this.panlProfileSelectionFooter.Size = new System.Drawing.Size(720, 36);
             this.panlProfileSelectionFooter.TabIndex = 10;
+            // 
+            // bttnSaveProfile
+            // 
+            this.bttnSaveProfile.Location = new System.Drawing.Point(284, 8);
+            this.bttnSaveProfile.Name = "bttnSaveProfile";
+            this.bttnSaveProfile.Size = new System.Drawing.Size(75, 23);
+            this.bttnSaveProfile.TabIndex = 10;
+            this.bttnSaveProfile.Text = "Save Profile";
+            this.bttnSaveProfile.UseVisualStyleBackColor = true;
+            this.bttnSaveProfile.Click += new System.EventHandler(this.bttnSaveProfile_Click);
             // 
             // bttnLoadProfile
             // 
@@ -348,6 +373,22 @@
             this.dgrvSettings.Size = new System.Drawing.Size(720, 380);
             this.dgrvSettings.TabIndex = 5;
             // 
+            // rimworldFolderDataGridViewTextBoxColumn
+            // 
+            this.rimworldFolderDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.rimworldFolderDataGridViewTextBoxColumn.DataPropertyName = "RimworldFolder";
+            this.rimworldFolderDataGridViewTextBoxColumn.HeaderText = "RimworldFolder";
+            this.rimworldFolderDataGridViewTextBoxColumn.Name = "rimworldFolderDataGridViewTextBoxColumn";
+            this.rimworldFolderDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // ConfigFolderDataGridViewTextBoxColumn
+            // 
+            this.ConfigFolderDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ConfigFolderDataGridViewTextBoxColumn.DataPropertyName = "ConfigFolder";
+            this.ConfigFolderDataGridViewTextBoxColumn.HeaderText = "ConfigFolder";
+            this.ConfigFolderDataGridViewTextBoxColumn.Name = "ConfigFolderDataGridViewTextBoxColumn";
+            this.ConfigFolderDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
             // WorkshopFolder
             // 
             this.WorkshopFolder.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -355,6 +396,10 @@
             this.WorkshopFolder.HeaderText = "WorkshopFolder";
             this.WorkshopFolder.Name = "WorkshopFolder";
             this.WorkshopFolder.ReadOnly = true;
+            // 
+            // bsrcSettings
+            // 
+            this.bsrcSettings.DataSource = typeof(RimworldModManager.ProgramSettings.Profile);
             // 
             // tabcMain_ModManager
             // 
@@ -379,46 +424,26 @@
             this.panl_MainFooter.Size = new System.Drawing.Size(734, 49);
             this.panl_MainFooter.TabIndex = 11;
             // 
-            // bttnSaveProfile
+            // tabcMain_ResearchManager
             // 
-            this.bttnSaveProfile.Location = new System.Drawing.Point(284, 8);
-            this.bttnSaveProfile.Name = "bttnSaveProfile";
-            this.bttnSaveProfile.Size = new System.Drawing.Size(75, 23);
-            this.bttnSaveProfile.TabIndex = 10;
-            this.bttnSaveProfile.Text = "Save Profile";
-            this.bttnSaveProfile.UseVisualStyleBackColor = true;
-            this.bttnSaveProfile.Click += new System.EventHandler(this.bttnSaveProfile_Click);
+            this.tabcMain_ResearchManager.Controls.Add(this.bttnLoadResearch);
+            this.tabcMain_ResearchManager.Location = new System.Drawing.Point(4, 22);
+            this.tabcMain_ResearchManager.Name = "tabcMain_ResearchManager";
+            this.tabcMain_ResearchManager.Padding = new System.Windows.Forms.Padding(3);
+            this.tabcMain_ResearchManager.Size = new System.Drawing.Size(726, 386);
+            this.tabcMain_ResearchManager.TabIndex = 2;
+            this.tabcMain_ResearchManager.Text = "Research Manager";
+            this.tabcMain_ResearchManager.UseVisualStyleBackColor = true;
             // 
-            // rimworldFolderDataGridViewTextBoxColumn
+            // bttnLoadResearch
             // 
-            this.rimworldFolderDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.rimworldFolderDataGridViewTextBoxColumn.DataPropertyName = "RimworldFolder";
-            this.rimworldFolderDataGridViewTextBoxColumn.HeaderText = "RimworldFolder";
-            this.rimworldFolderDataGridViewTextBoxColumn.Name = "rimworldFolderDataGridViewTextBoxColumn";
-            this.rimworldFolderDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // ConfigFolderDataGridViewTextBoxColumn
-            // 
-            this.ConfigFolderDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ConfigFolderDataGridViewTextBoxColumn.DataPropertyName = "ConfigFolder";
-            this.ConfigFolderDataGridViewTextBoxColumn.HeaderText = "ConfigFolder";
-            this.ConfigFolderDataGridViewTextBoxColumn.Name = "ConfigFolderDataGridViewTextBoxColumn";
-            this.ConfigFolderDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // bsrcSettings
-            // 
-            this.bsrcSettings.DataSource = typeof(RimworldModManager.ProgramSettings.Profile);
-            // 
-            // dgrvMods_Author
-            // 
-            this.dgrvMods_Author.DataPropertyName = "Author";
-            this.dgrvMods_Author.HeaderText = "Author";
-            this.dgrvMods_Author.Name = "dgrvMods_Author";
-            this.dgrvMods_Author.ReadOnly = true;
-            // 
-            // bsrcModDetails
-            // 
-            this.bsrcModDetails.DataSource = typeof(RimworldModManager.DataObjects.ModDetails);
+            this.bttnLoadResearch.Location = new System.Drawing.Point(11, 6);
+            this.bttnLoadResearch.Name = "bttnLoadResearch";
+            this.bttnLoadResearch.Size = new System.Drawing.Size(75, 23);
+            this.bttnLoadResearch.TabIndex = 0;
+            this.bttnLoadResearch.Text = "Load Research";
+            this.bttnLoadResearch.UseVisualStyleBackColor = true;
+            this.bttnLoadResearch.Click += new System.EventHandler(this.bttnLoadResearch_Click);
             // 
             // frmMain
             // 
@@ -432,6 +457,7 @@
             this.Text = "Rimworld Mod Orginiser";
             this.Load += new System.EventHandler(this.frmMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgrvMods)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsrcModDetails)).EndInit();
             this.toolModGrid.ResumeLayout(false);
             this.toolModGrid.PerformLayout();
             this.panelFooter.ResumeLayout(false);
@@ -444,12 +470,12 @@
             this.tabcMain_ProfileSelection.ResumeLayout(false);
             this.panlProfileSelectionFooter.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgrvSettings)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsrcSettings)).EndInit();
             this.tabcMain_ModManager.ResumeLayout(false);
             this.tabcMain_ModManager.PerformLayout();
             this.panl_MainFooter.ResumeLayout(false);
             this.panl_MainFooter.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bsrcSettings)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsrcModDetails)).EndInit();
+            this.tabcMain_ResearchManager.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -490,6 +516,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ConfigFolderDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn WorkshopFolder;
         private System.Windows.Forms.Button bttnSaveProfile;
+        private System.Windows.Forms.TabPage tabcMain_ResearchManager;
+        private System.Windows.Forms.Button bttnLoadResearch;
     }
 }
 

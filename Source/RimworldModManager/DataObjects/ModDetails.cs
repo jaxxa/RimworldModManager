@@ -78,7 +78,21 @@ namespace RimworldModManager.DataObjects
             }
         }
         string m_Description;
-        
+
+
+        public string ModFilePath
+        {
+            get
+            {
+                return this.m_ModFilePath;
+            }
+            set
+            {
+                this.m_ModFilePath = value;
+            }
+        }
+        string m_ModFilePath;
+
         //Convert this to its own class eventually instead of strings?
         public List<Dependency> Dependencies
         {
@@ -242,6 +256,8 @@ namespace RimworldModManager.DataObjects
         
         public void load(string modFolder)
         {
+            this.ModFilePath = modFolder;
+
             this.DiskName = System.IO.Path.GetFileName(modFolder);
 
             if (System.IO.File.Exists(modFolder + @"\About\About.xml"))

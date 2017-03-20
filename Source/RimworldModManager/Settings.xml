@@ -2,8 +2,8 @@
 <RimworldModManager>
   <RMOProfiles>
     <Profile>
-      <RimworldFolder>D:\~Shared\RimWorld1135Win</RimworldFolder>
-      <ConfigFolder>D:\~Shared\RimWorld1135Win\SaveData2</ConfigFolder>
+      <RimworldFolder>D:\Games\SteamLibrary\steamapps\common\RimWorld</RimworldFolder>
+      <ConfigFolder>C:\Users\Jaxxa\AppData\LocalLow\Ludeon Studios\RimWorld by Ludeon Studios</ConfigFolder>
     </Profile>
     <Profile>
       <RimworldFolder>C:\Games\RimWorldAlpha12dWin\RimWorld914Win</RimworldFolder>
