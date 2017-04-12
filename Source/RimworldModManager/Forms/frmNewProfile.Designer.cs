@@ -110,9 +110,9 @@
             this.lblInstructions.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblInstructions.Location = new System.Drawing.Point(3, 0);
             this.lblInstructions.Name = "lblInstructions";
-            this.lblInstructions.Size = new System.Drawing.Size(185, 18);
+            this.lblInstructions.Size = new System.Drawing.Size(189, 18);
             this.lblInstructions.TabIndex = 6;
-            this.lblInstructions.Text = "Please createa new profile:";
+            this.lblInstructions.Text = "Please create a new profile:";
             // 
             // bttnChooseRimworldFolder
             // 
