@@ -7,7 +7,7 @@ using System.Xml;
 
 namespace RimworldModManager.DataObjects
 {
-    class ModDetails
+    public class ModDetails
     {
 
         #region Properties

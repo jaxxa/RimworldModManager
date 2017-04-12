@@ -10,7 +10,7 @@ using System.Xml.Linq;
 
 namespace RimworldModManager.DataObjects
 {
-    class ModManager
+    public class ModManager
     {
 
         public const int INACTIVE_SEQUENCE = int.MaxValue;

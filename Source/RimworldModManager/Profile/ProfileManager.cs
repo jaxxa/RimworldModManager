@@ -10,6 +10,7 @@ namespace RimworldModManager.ProgramSettings
 {
     public class ProfileManager
     {
+
         public List<Profile> Profiles = new List<Profile>();
         public Profile ActiveProfile;
 
@@ -106,5 +107,6 @@ namespace RimworldModManager.ProgramSettings
             _XmlSettings.Save(@"Settings.xml");
 
         }
+
     }
 }
