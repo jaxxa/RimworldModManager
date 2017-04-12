@@ -336,6 +336,7 @@ namespace RimworldModManager
             else
             {
                 lblProfile.Text = this.m_ProfileManager.ActiveProfile.ToString();
+                tabcMain.SelectTab(tabcMain_ModManager);
             }
 
 
@@ -348,18 +349,11 @@ namespace RimworldModManager
 
         #region Research
 
-        //  Research.ResearchManager m_ResearchManager;
-
-        private void bttnLoadResearch_Click(object sender, EventArgs e)
+        private void bttnManageResearch_Click(object sender, EventArgs e)
         {
-
+            frmResearch.ManageResearch(this.m_Manager);
         }
 
-
-        //private List<string> FilterResearchFiles(List<string> xmlFiles)
-        //{
-
-        //}
 
         #endregion
 

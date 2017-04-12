@@ -1,4 +1,4 @@
-﻿namespace RimworldModManager.Forms.Research
+﻿namespace RimworldModManager
 {
     partial class frmResearch
     {

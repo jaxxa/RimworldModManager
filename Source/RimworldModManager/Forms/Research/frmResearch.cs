@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace RimworldModManager.Forms.Research
+namespace RimworldModManager
 {
     public partial class frmResearch : Form
     {

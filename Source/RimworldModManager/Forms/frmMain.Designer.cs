@@ -64,8 +64,7 @@
             this.bsrcSettings = new System.Windows.Forms.BindingSource(this.components);
             this.tabcMain_ModManager = new System.Windows.Forms.TabPage();
             this.panl_MainFooter = new System.Windows.Forms.Panel();
-            this.tabcMain_ResearchManager = new System.Windows.Forms.TabPage();
-            this.bttnLoadResearch = new System.Windows.Forms.Button();
+            this.bttnManageResearch = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgrvMods)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsrcModDetails)).BeginInit();
             this.toolModGrid.SuspendLayout();
@@ -81,7 +80,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.bsrcSettings)).BeginInit();
             this.tabcMain_ModManager.SuspendLayout();
             this.panl_MainFooter.SuspendLayout();
-            this.tabcMain_ResearchManager.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgrvMods
@@ -197,6 +195,7 @@
             // 
             // panelFooter
             // 
+            this.panelFooter.Controls.Add(this.bttnManageResearch);
             this.panelFooter.Controls.Add(this.bttnSaveAndRun);
             this.panelFooter.Controls.Add(this.bttnSaveConfig);
             this.panelFooter.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -276,7 +275,6 @@
             // 
             this.tabcMain.Controls.Add(this.tabcMain_ProfileSelection);
             this.tabcMain.Controls.Add(this.tabcMain_ModManager);
-            this.tabcMain.Controls.Add(this.tabcMain_ResearchManager);
             this.tabcMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabcMain.Location = new System.Drawing.Point(0, 0);
             this.tabcMain.Name = "tabcMain";
@@ -424,26 +422,15 @@
             this.panl_MainFooter.Size = new System.Drawing.Size(734, 49);
             this.panl_MainFooter.TabIndex = 11;
             // 
-            // tabcMain_ResearchManager
+            // bttnManageResearch
             // 
-            this.tabcMain_ResearchManager.Controls.Add(this.bttnLoadResearch);
-            this.tabcMain_ResearchManager.Location = new System.Drawing.Point(4, 22);
-            this.tabcMain_ResearchManager.Name = "tabcMain_ResearchManager";
-            this.tabcMain_ResearchManager.Padding = new System.Windows.Forms.Padding(3);
-            this.tabcMain_ResearchManager.Size = new System.Drawing.Size(726, 386);
-            this.tabcMain_ResearchManager.TabIndex = 2;
-            this.tabcMain_ResearchManager.Text = "Research Manager";
-            this.tabcMain_ResearchManager.UseVisualStyleBackColor = true;
-            // 
-            // bttnLoadResearch
-            // 
-            this.bttnLoadResearch.Location = new System.Drawing.Point(11, 6);
-            this.bttnLoadResearch.Name = "bttnLoadResearch";
-            this.bttnLoadResearch.Size = new System.Drawing.Size(75, 23);
-            this.bttnLoadResearch.TabIndex = 0;
-            this.bttnLoadResearch.Text = "Load Research";
-            this.bttnLoadResearch.UseVisualStyleBackColor = true;
-            this.bttnLoadResearch.Click += new System.EventHandler(this.bttnLoadResearch_Click);
+            this.bttnManageResearch.Location = new System.Drawing.Point(8, 6);
+            this.bttnManageResearch.Name = "bttnManageResearch";
+            this.bttnManageResearch.Size = new System.Drawing.Size(110, 23);
+            this.bttnManageResearch.TabIndex = 2;
+            this.bttnManageResearch.Text = "Manage Research";
+            this.bttnManageResearch.UseVisualStyleBackColor = true;
+            this.bttnManageResearch.Click += new System.EventHandler(this.bttnManageResearch_Click);
             // 
             // frmMain
             // 
@@ -475,7 +462,6 @@
             this.tabcMain_ModManager.PerformLayout();
             this.panl_MainFooter.ResumeLayout(false);
             this.panl_MainFooter.PerformLayout();
-            this.tabcMain_ResearchManager.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -516,8 +502,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ConfigFolderDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn WorkshopFolder;
         private System.Windows.Forms.Button bttnSaveProfile;
-        private System.Windows.Forms.TabPage tabcMain_ResearchManager;
-        private System.Windows.Forms.Button bttnLoadResearch;
+        private System.Windows.Forms.Button bttnManageResearch;
     }
 }
 
