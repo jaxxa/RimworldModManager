@@ -8,6 +8,6 @@ namespace RimworldModManager.DataObjects.Research
 {
     class ResearchProjectDef
     {
-
+        public string sourceText;
     }
 }

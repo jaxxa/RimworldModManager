@@ -47,7 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataObjects\Dependency.cs" />
+    <Compile Include="Old\Dependency.cs" />
     <Compile Include="DataObjects\Research\ResearchProjectDef.cs" />
     <Compile Include="Forms\frmSettings.cs">
       <SubType>Form</SubType>
@@ -67,10 +67,10 @@
     <Compile Include="Forms\Research\frmResearch.Designer.cs">
       <DependentUpon>frmResearch.cs</DependentUpon>
     </Compile>
-    <Compile Include="Profile\Profile.cs" />
-    <Compile Include="Profile\ProfileManager.cs" />
-    <Compile Include="DataObjects\ModManager.cs" />
-    <Compile Include="DataObjects\ModDetails.cs" />
+    <Compile Include="DataObjects\Profile\Profile.cs" />
+    <Compile Include="DataObjects\Profile\ProfileManager.cs" />
+    <Compile Include="DataObjects\Mod\ModManager.cs" />
+    <Compile Include="DataObjects\Mod\ModDetails.cs" />
     <Compile Include="Forms\frmMain.cs">
       <SubType>Form</SubType>
     </Compile>

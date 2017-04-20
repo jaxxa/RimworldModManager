@@ -8,5 +8,6 @@ namespace RimworldModManager.Research
 {
     class ResearchManager
     {
+
     }
 }

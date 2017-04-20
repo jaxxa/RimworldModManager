@@ -33,15 +33,17 @@ namespace RimworldModManager
                     List<string> _xmlFiles = this.GetAllXmlFiles(_CurrentMod.ModFilePath);
 
                     //Iterate finding Research
-                    //List<string> xmlResearchFiles = _xmlFiles.Where(x => x.Contains("Research")).ToList();
                     List<string> xmlResearchFiles = _xmlFiles.Where(x => this.FileContainsText(x, "ResearchProjectDef")).ToList();
-
+                    
                     //Load Research Objects
-
 
                 }
             }
+
+            //Dislpay Research Objects
         }
+        
+        //Create Patch Mod
 
         public static void ManageResearch(ModManager manager)
         {
@@ -59,7 +61,6 @@ namespace RimworldModManager
             }
             return;
         }
-
 
         private List<string> GetAllXmlFiles(string modPath)
         {
