@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace RimworldModManager
 {
@@ -34,15 +35,70 @@ namespace RimworldModManager
 
                     //Iterate finding Research
                     List<string> xmlResearchFiles = _xmlFiles.Where(x => this.FileContainsText(x, "ResearchProjectDef")).ToList();
-                    
-                    //Load Research Objects
 
+                    //Load Research Objects
+                    xmlResearchFiles.ForEach(d => this.XmlPathToResearchObjects(d));
                 }
             }
 
             //Dislpay Research Objects
         }
-        
+
+        public void XmlPathToResearchObjects(String xmlFile)
+        {
+            Console.WriteLine(xmlFile);
+
+            if (System.IO.File.Exists(xmlFile))
+            {
+                XmlDocument _XmlSettingsDocument = new XmlDocument();
+                _XmlSettingsDocument.Load(xmlFile);
+
+                // XmlNode _XmlRmoProfiles = _XmlSettingsDocument.SelectSingleNode(@"RimworldModManager/RMOProfiles");
+
+                //Iterate Through Top Level Nodes
+                foreach (XmlNode _XmlNode in _XmlSettingsDocument)
+                {
+                    //If the node does not contain a ResearchProjectDef goto the next one.
+                    if (!_XmlNode.InnerXml.Contains("ResearchProjectDef")) { continue; };
+
+                    XmlNodeList _ResearchProjectNodes = _XmlNode.SelectNodes(@"ResearchProjectDef");
+
+                    foreach (XmlNode _ResearchNode in _ResearchProjectNodes)
+                    {
+                        //Dont import Abstracts.
+                        var _Abstract = _ResearchNode.Attributes.GetNamedItem("Abstract");
+                        if (_Abstract != null && _Abstract.Value == "True") { continue; };
+
+                        XmlNode _XmlDefName = _ResearchNode.SelectSingleNode(@"defName");
+                        String _DefName = _XmlDefName.InnerText;
+
+                        XmlNode _XmlResearchViewX = _ResearchNode.SelectSingleNode(@"researchViewX");
+                        String _ResearchViewX = _XmlResearchViewX.InnerText;
+
+                        XmlNode _XmlResearchViewY = _ResearchNode.SelectSingleNode(@"researchViewY");
+                        String _ResearchViewY = _XmlResearchViewY.InnerText;
+
+                    }
+
+                    //Profile _NewProfile = new Profile();
+
+
+                    //var _XmlConfigFolder = _XmlProfile.SelectSingleNode(@"ConfigFolder");
+                    //_NewProfile.ConfigFolder = _XmlConfigFolder.InnerText;
+
+                    //var _XmlWorkshopFolder = _XmlProfile.SelectSingleNode(@"WorkshopFolder");
+                    //if (_XmlWorkshopFolder != null)
+                    //{
+                    //    _NewProfile.WorkshopFolder = _XmlWorkshopFolder.InnerText;
+                    //}
+
+                    //this.Profiles.Add(_NewProfile);
+
+                }
+            }
+
+        }
+
         //Create Patch Mod
 
         public static void ManageResearch(ModManager manager)
@@ -54,10 +110,10 @@ namespace RimworldModManager
 
             if (_result == DialogResult.OK)
             {
-                
-             //   _NewProfile.RimworldFolder = _frmNewProfile.txbxRimworldFolder.Text;
 
-               // return _NewProfile;
+                //   _NewProfile.RimworldFolder = _frmNewProfile.txbxRimworldFolder.Text;
+
+                // return _NewProfile;
             }
             return;
         }

@@ -84,8 +84,7 @@ namespace RimworldModManager.ProgramSettings
 
         public void Save()
         {
-
-
+            
             XDocument _XmlSettings = new XDocument();
 
             XElement _XmlRimworldModManager = new XElement("RimworldModManager");
